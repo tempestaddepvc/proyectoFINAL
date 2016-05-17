@@ -234,6 +234,20 @@ class DbHandler {
         return $result;
     }
 
+    public function createFav($id_recipe,$user) {
+        $stmt = $this->conn->prepare("INSERT INTO favs(iduser, idrecipe) values( ?,?)");
+        $stmt->bind_param("ii", $user,$id_recipe);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        if ($result) {
+            // task row created
+            return $this->conn->insert_id;
+        } else {
+            // task failed to create
+            return NULL;
+        }
+    }
 
 
 
@@ -282,8 +296,22 @@ class DbHandler {
         return $recipes;
     }
 
-
-
+    public function getRecipeByName($name) {
+        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE name = ?");
+        $stmt->bind_param("s", "%" . $name . "%");
+        $stmt->execute();
+        $recipes = $stmt->get_result();
+        $stmt->close();
+        return $recipes;
+    }
+    public function deleteFAV($user_id, $recipe_id) {
+        $stmt = $this->conn->prepare("DELETE  FROM favs f WHERE f.iduser = ? AND f.idrecipe= ?");
+        $stmt->bind_param("ii", $user_id, recipe_id);
+        $stmt->execute();
+        $num_affected_rows = $stmt->affected_rows;
+        $stmt->close();
+        return $num_affected_rows > 0;
+    }
 
 
 
