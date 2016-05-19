@@ -1,4 +1,3 @@
-DbHandler.php
 <?php
 
 /**
@@ -240,13 +239,7 @@ class DbHandler {
         $result = $stmt->execute();
         $stmt->close();
 
-        if ($result) {
-            // task row created
-            return $this->conn->insert_id;
-        } else {
-            // task failed to create
-            return NULL;
-        }
+        return $result;
     }
 
 
@@ -296,23 +289,56 @@ class DbHandler {
         return $recipes;
     }
 
-    public function getRecipeByName($name) {
-        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE name = ?");
+    public function getRecipeById($idrecipe) {
+        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE idrecipe = ?");
+        $stmt->bind_param("i", $idrecipe);
+        $stmt->execute();
+        $recipes = $stmt->get_result();
+        $stmt->close();
+        return $recipes;
+    }
+
+    public function getRecipesByName($name) {
+        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE name LIKE ?");
         $stmt->bind_param("s", "%" . $name . "%");
         $stmt->execute();
         $recipes = $stmt->get_result();
         $stmt->close();
         return $recipes;
     }
-    public function deleteFAV($user_id, $recipe_id) {
-        $stmt = $this->conn->prepare("DELETE  FROM favs f WHERE f.iduser = ? AND f.idrecipe= ?");
-        $stmt->bind_param("ii", $user_id, recipe_id);
+    public function deleteFav($user_id, $recipe_id) {
+        $stmt = $this->conn->prepare("DELETE FROM favs WHERE iduser = ? AND idrecipe = ?");
+        $stmt->bind_param("si", $user_id, $recipe_id);
         $stmt->execute();
         $num_affected_rows = $stmt->affected_rows;
         $stmt->close();
         return $num_affected_rows > 0;
     }
 
+    public function getAllRecipes(){
+        $stmt = $this->conn->prepare("SELECT * FROM recipes");
+        $stmt->execute();
+        $recipes = $stmt->get_result();
+        $stmt->close();
+        return $recipes;
+    }
+    public function getAllIngredients(){
+        $stmt = $this->conn->prepare("SELECT * FROM ingredients");
+        $stmt->execute();
+        $ingredients = $stmt->get_result();
+        $stmt->close();
+        return $ingredients;
+    }
+
+    ///// Primer ? desconocido si funcionara
+    public function getRecipesByIngredients($idIngredients, $numIngredients){
+        $stmt = $this->conn->prepare("select * from recipes where idrecipe in (select idrecipe from quantity where idingredient in ? group by 1 having count(*)=?)");
+        $stmt->bind_param("ii", $idIngredients, $numIngredients);
+        $stmt->execute();
+        $recipes = $stmt->get_result();
+        $stmt->close();
+        return $recipes;
+    }
 
 
 
