@@ -10,7 +10,7 @@ class DbHandler {
     private $conn;
 
     function __construct() {
-        require_once dirname(__FILE__) . './DbConnect.php';
+        require_once dirname(__FILE__) . '/DbConnect.php';
         // opening db connection
         $db = new DbConnect();
         $this->conn = $db->connect();
@@ -233,9 +233,9 @@ class DbHandler {
         return $result;
     }
 
-    public function createFav($id_recipe,$user) {
+    public function createFav($user,$id_recipe) {
         $stmt = $this->conn->prepare("INSERT INTO favs(iduser, idrecipe) values( ?,?)");
-        $stmt->bind_param("ii", $user,$id_recipe);
+        $stmt->bind_param("si", $user,$id_recipe);
         $result = $stmt->execute();
         $stmt->close();
 
@@ -281,7 +281,7 @@ class DbHandler {
     }
 
     public function getAllRecipeStep($id_recipe) {
-        $stmt = $this->conn->prepare("SELECT idmaking, step, picture FROM making WHERE q.idrecipe = ?");
+        $stmt = $this->conn->prepare("SELECT idmaking, step, picture FROM making WHERE idrecipe = ?");
         $stmt->bind_param("i", $id_recipe);
         $stmt->execute();
         $recipes = $stmt->get_result();
@@ -290,7 +290,7 @@ class DbHandler {
     }
 
     public function getRecipeById($idrecipe) {
-        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE idrecipe = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM recipes WHERE idrecipe = ?");
         $stmt->bind_param("i", $idrecipe);
         $stmt->execute();
         $recipes = $stmt->get_result();
@@ -299,8 +299,8 @@ class DbHandler {
     }
 
     public function getRecipesByName($name) {
-        $stmt = $this->conn->prepare("SELECT * FROM recipe WHERE name LIKE ?");
-        $stmt->bind_param("s", "%" . $name . "%");
+        $stmt = $this->conn->prepare("SELECT * FROM recipes WHERE name LIKE ?");
+        $stmt->bind_param("s", $name);
         $stmt->execute();
         $recipes = $stmt->get_result();
         $stmt->close();

@@ -45,6 +45,45 @@ function verifyRequiredParams($required_fields) {
 
 
 /**
+ * Adding Middle Layer to authenticate every request
+ * Checking if the request has valid api key in the 'Authorization' header
+ */
+function authenticate(\Slim\Route $route) {
+    // Getting request headers
+    $headers = apache_request_headers();
+    $response = array();
+    $app = \Slim\Slim::getInstance();
+
+    // Verifying Authorization Header
+    if (isset($headers['authorization'])) {
+        $db = new DbHandler();
+
+        // get the api key
+        $api_key = $headers['authorization'];
+        // validating api key
+        if (!$db->isValidApiKey($api_key)) {
+            // api key is not present in users table
+            $response["error"] = true;
+            $response["message"] = "Access Denied. Invalid Api key";
+            echoRespnse(401, $response);
+            $app->stop();
+        } else {
+            global $user_id;
+            // get user primary key id
+            $user = $db->getUserId($api_key);
+            if ($user != NULL)
+                $user_id = $user["name"];
+        }
+    } else {
+        // api key is missing in header
+        $response["error"] = true;
+        $response["message"] = "Api key is misssing";
+        echoRespnse(400, $response);
+        $app->stop();
+    }
+}
+
+/**
  * Echoing json response to client
  * @param String $status_code Http response code
  * @param Int $response Json response
@@ -173,69 +212,201 @@ $app->get('/recipes',   function() {
 
     echoRespnse(200, $response);
 });
-/**
- * Listing single task of particual user
- * method GET
- * url /tasks/:id
- * Will return 404 if the task doesn't belongs to user
- */
 
 
-//$app->post('/recipes', 'authenticate', function() use ($app) {
-//    // check for required params
-//    verifyRequiredParams(array('recipe'));
-//
+$app->get('/ingredients',   function() {
+    $response = array();
+    $db = new DbHandler();
+
+    // fetching all user tasks
+    $result = $db->getAllIngredients();
+
+    $response["error"] = false;
+    $response["recipes"] = array();
+
+    // looping through result and preparing tasks array
+    while ($ingredient = $result->fetch_assoc()) {
+        $tmp = array();
+        $tmp["idingredient"] = $ingredient["idingredient"];
+        $tmp["name"] = $ingredient["name"];
+
+        array_push($response["recipes"], $tmp);
+    }
+
+    echoRespnse(200, $response);
+});
+
+
+
+
+$app->get('/recipes/:id',  function($recipe_id) {
+    $response = array();
+    $db = new DbHandler();
+
+    // fetch task
+    $recipe = $db->getRecipeById($recipe_id)->fetch_assoc();
+
+    if ($recipe != NULL) {
+        $response["error"] = false;
+        $response["recipes"] = array();
+        $tmp = array();
+        $tmp["idrecipe"] = $recipe["idrecipe"];
+        $tmp["name"] = $recipe["name"];
+        $tmp["details"] = $recipe["details"];
+        $tmp["picture"] = $recipe["picture"];
+        $tmp["difficulty"] = $recipe["difficulty"];
+        $tmp["time"] = $recipe["time"];
+        $tmp["diners"] = $recipe["diners"];
+        $tmp["creator"] = $recipe["creator"];
+        array_push($response["recipes"], $tmp);
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "The requested resource doesn't exists";
+        echoRespnse(404, $response);
+    }
+});
+
+
+$app->get('/filter/:name',  function($name){
+    $response = array();
+    $db = new DbHandler();
+    // fetch task
+    $result = $db->getRecipesByName('%'.$name.'%');
+
+    if ($result != NULL) {
+        $response["error"] = false;
+        $response["recipes"] = array();
+        while ($recipe = $result->fetch_assoc()) {
+            $tmp = array();
+            $tmp["idrecipe"] = $recipe["idrecipe"];
+            $tmp["name"] = $recipe["name"];
+            $tmp["details"] = $recipe["details"];
+            $tmp["picture"] = $recipe["picture"];
+            $tmp["difficulty"] = $recipe["difficulty"];
+            $tmp["time"] = $recipe["time"];
+            $tmp["diners"] = $recipe["diners"];
+            $tmp["creator"] = $recipe["creator"];
+            array_push($response["recipes"], $tmp);
+        }
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "The requested resourceasdas doesn't exists";
+        echoRespnse(404, $response);
+    }
+});
+
+
+////////// Prototipo para filtro ingredients
+//$app->post('/filter',  function() use ($app){
+//    verifyRequiredParams(array('name'));
 //    $response = array();
-//    $recipe = $app->request->post('recipe');
-//
-//
-//    global $user_id;
 //    $db = new DbHandler();
-//
-//    // creating new task
-//    $recipe_id = $db->createRecipe($user_id, $name, $details, $picture, $difficulty, $time, $diners);
-//
-//    if ($recipe_id != NULL) {
-//        $response["error"] = false;
-//        $response["message"] = "Task created successfully";
-//        $response["recipe_id"] = $recipe_id;
-//    } else {
-//        $response["error"] = true;
-//        $response["message"] = "Failed to create task. Please try again";
-//    }
-//    echoRespnse(201, $response);
-//});
-
-
-//$app->get('/recipes/:id', 'authenticate', function($recipe_id) use($app) {
-//
-//    $response = array();
-//    $db = new DbHandler();
-//
+//    $name=$app->request->post('name');
 //    // fetch task
-//    $result = $db->getRecipeById($recipe_id);
+//    $result = $db->getRecipesByName('%'.$name.'%');
 //
 //    if ($result != NULL) {
 //        $response["error"] = false;
-//        $response["idrecipe"] = $result["idrecipe"];
-//        $response["name"] = $result["name"];
-//        $response["details"] = $result["details"];
-//        $response["picture"] = $result["picture"];
-//        $response["difficulty"] = $result["difficulty"];
-//        $response["time"] = $result["time"];
-//        $response["diners"] = $result["diners"];
-//        $response["creator"] = $result["creator"];
+//        $response["recipes"] = array();
+//        while ($recipe = $result->fetch_assoc()) {
+//            $tmp = array();
+//            $tmp["idrecipe"] = $recipe["idrecipe"];
+//            $tmp["name"] = $recipe["name"];
+//            $tmp["details"] = $recipe["details"];
+//            $tmp["picture"] = $recipe["picture"];
+//            $tmp["difficulty"] = $recipe["difficulty"];
+//            $tmp["time"] = $recipe["time"];
+//            $tmp["diners"] = $recipe["diners"];
+//            $tmp["creator"] = $recipe["creator"];
+//            array_push($response["recipes"], $tmp);
+//        }
+//
 //        echoRespnse(200, $response);
 //    } else {
 //        $response["error"] = true;
-//        $response["message"] = "The requested resource doesn't exists";
+//        $response["message"] = "The requested resourceasdas doesn't exists";
 //        echoRespnse(404, $response);
 //    }
 //});
 
+// Crear recipe temporal, aun no se puede añadir los ingredientes ni los metodos
+$app->post('/recipes', 'authenticate', function() use ($app) {
+    // check for required params
+    verifyRequiredParams(array('recipe'));
+
+    $response = array();
+    $recipe = json_decode($app->request->post('recipe'),true);
+    
+    $name =$recipe["name"];
+    $details =$recipe["details"];
+    $picture =$recipe["picture"];
+    $difficulty =$recipe["difficulty"];
+    $time =$recipe["time"];
+    $diners =$recipe["diners"];
+
+    global $user_id;
+    $db = new DbHandler();
+
+    // creating new task
+    $recipe_id = $db->createRecipe($user_id, $name, $details, $picture, $difficulty, $time, $diners);
+
+    if ($recipe_id != NULL) {
+        $response["error"] = false;
+        $response["message"] = "Task created successfully";
+        $response["recipe_id"] = $recipe_id;
+    } else {
+        $response["error"] = true;
+        $response["message"] = "Failed to create task. Please try again";
+    }
+    echoRespnse(201, $response);
+});
 
 
 
+
+
+$app->post('/favs/:id', 'authenticate', function($recipe_id) {
+    global $user_id;
+    $response = array();
+    $db = new DbHandler();
+
+    // fetch task
+    $result = $db->createFav($user_id,$recipe_id);
+
+    if ($result) {
+        $response["error"] = false;
+        $response["message"] = "Añadido con exito";
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "The requested resource doesn't exists";
+        echoRespnse(404, $response);
+    }
+});
+$app->delete('/favs/:id', 'authenticate', function($recipe_id) {
+    global $user_id;
+    $response = array();
+    $db = new DbHandler();
+
+    // fetch task
+    $result = $db->deleteFav($user_id,$recipe_id);
+
+    if ($result) {
+        $response["error"] = false;
+        $response["message"] = "Eliminado con exito";
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "The requested resource doesn't exists";
+        echoRespnse(404, $response);
+    }
+});
 
 
 
@@ -245,27 +416,6 @@ $app->get('/recipes',   function() {
 
 
 $app->run();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ?>
