@@ -257,6 +257,17 @@ class DbHandler {
         $stmt->close();
         return $recipes;
     }
+
+    public function getUserFavAndCreatedRecipes($user){
+      $stmt = $this->conn->prepare("SELECT * FROM recipes where creator=? or idrecipe IN(select idrecipe from favs where iduser=?)");
+      $stmt->bind_param("ss", $user,$user);
+      $stmt->execute();
+      $recipes = $stmt->get_result();
+      $stmt->close();
+      return $recipes;
+
+    }
+
     /**
      * Fetching all user tasks
      * @param String $user_id id of the user

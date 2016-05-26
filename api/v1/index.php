@@ -222,7 +222,7 @@ $app->get('/ingredients',   function() {
     $result = $db->getAllIngredients();
 
     $response["error"] = false;
-    $response["recipes"] = array();
+    $response["ingredients"] = array();
 
     // looping through result and preparing tasks array
     while ($ingredient = $result->fetch_assoc()) {
@@ -230,13 +230,92 @@ $app->get('/ingredients',   function() {
         $tmp["idingredient"] = $ingredient["idingredient"];
         $tmp["name"] = $ingredient["name"];
 
+        array_push($response["ingredients"], $tmp);
+    }
+
+    echoRespnse(200, $response);
+});
+
+$app->get('/favs/user/:id',   function($user_id) {
+    $response = array();
+    $db = new DbHandler();
+
+    // fetching all user tasks
+    $result = $db->getAllUserFavs($user_id);
+
+    $response["error"] = false;
+    $response["recipes"] = array();
+
+    // looping through result and preparing tasks array
+    while ($recipe = $result->fetch_assoc()) {
+        $tmp = array();
+        $tmp["idrecipe"] = $recipe["idrecipe"];
+        $tmp["name"] = $recipe["name"];
+        $tmp["details"] = $recipe["details"];
+        $tmp["picture"] = $recipe["picture"];
+        $tmp["difficulty"] = $recipe["difficulty"];
+        $tmp["time"] = $recipe["time"];
+        $tmp["diners"] = $recipe["diners"];
+        $tmp["creator"] = $recipe["creator"];
         array_push($response["recipes"], $tmp);
     }
 
     echoRespnse(200, $response);
 });
 
+$app->get('/recipes/user/:id',   function($user_id) {
+    $response = array();
+    $db = new DbHandler();
 
+    // fetching all user tasks
+    $result = $db->getAllUserRecipes($user_id);
+
+    $response["error"] = false;
+    $response["recipes"] = array();
+
+    // looping through result and preparing tasks array
+    while ($recipe = $result->fetch_assoc()) {
+        $tmp = array();
+        $tmp["idrecipe"] = $recipe["idrecipe"];
+        $tmp["name"] = $recipe["name"];
+        $tmp["details"] = $recipe["details"];
+        $tmp["picture"] = $recipe["picture"];
+        $tmp["difficulty"] = $recipe["difficulty"];
+        $tmp["time"] = $recipe["time"];
+        $tmp["diners"] = $recipe["diners"];
+        $tmp["creator"] = $recipe["creator"];
+        array_push($response["recipes"], $tmp);
+    }
+
+    echoRespnse(200, $response);
+});
+
+$app->get('/createdandfav/user/:id',   function($user_id) {
+    $response = array();
+    $db = new DbHandler();
+
+    // fetching all user tasks
+    $result = $db->getUserFavAndCreatedRecipes($user_id);
+
+    $response["error"] = false;
+    $response["recipes"] = array();
+
+    // looping through result and preparing tasks array
+    while ($recipe = $result->fetch_assoc()) {
+        $tmp = array();
+        $tmp["idrecipe"] = $recipe["idrecipe"];
+        $tmp["name"] = $recipe["name"];
+        $tmp["details"] = $recipe["details"];
+        $tmp["picture"] = $recipe["picture"];
+        $tmp["difficulty"] = $recipe["difficulty"];
+        $tmp["time"] = $recipe["time"];
+        $tmp["diners"] = $recipe["diners"];
+        $tmp["creator"] = $recipe["creator"];
+        array_push($response["recipes"], $tmp);
+    }
+
+    echoRespnse(200, $response);
+});
 
 
 $app->get('/recipes/:id',  function($recipe_id) {
@@ -248,7 +327,7 @@ $app->get('/recipes/:id',  function($recipe_id) {
 
     if ($recipe != NULL) {
         $response["error"] = false;
-        $response["recipes"] = array();
+        $response["recipe"] = array();
         $tmp = array();
         $tmp["idrecipe"] = $recipe["idrecipe"];
         $tmp["name"] = $recipe["name"];
@@ -258,6 +337,27 @@ $app->get('/recipes/:id',  function($recipe_id) {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
+        $tmp["quantities"]=array();
+        $selectResult = $db->getAllRecipeQuantity($recipe_id);
+
+        while ($quantities = $selectResult->fetch_assoc()) {
+            $tmpQuantities = array();
+            $tmpQuantities["name"] = $quantities["name"];
+            $tmpQuantities["cant"] = $quantities["cant"];
+            array_push($tmp["quantities"], $tmpQuantities);
+        }
+        $tmp["steps"]= array();
+
+        $selectResult = $db->getAllRecipeStep($recipe_id);
+        while ($steps = $selectResult->fetch_assoc()) {
+            $tmpSteps = array();
+            $tmpSteps["step"] = $steps["step"];
+            $tmpSteps["picture"] = $steps["picture"];
+            array_push($tmp["steps"], $tmpSteps);
+        }
+
+
+
         array_push($response["recipes"], $tmp);
 
         echoRespnse(200, $response);
@@ -340,7 +440,7 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
 
     $response = array();
     $recipe = json_decode($app->request->post('recipe'),true);
-    
+
     $name =$recipe["name"];
     $details =$recipe["details"];
     $picture =$recipe["picture"];
@@ -388,6 +488,10 @@ $app->post('/favs/:id', 'authenticate', function($recipe_id) {
         echoRespnse(404, $response);
     }
 });
+
+
+
+
 $app->delete('/favs/:id', 'authenticate', function($recipe_id) {
     global $user_id;
     $response = array();
