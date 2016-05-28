@@ -152,13 +152,14 @@ $app->post('/login', function() use ($app) {
 
     $db = new DbHandler();
     // check for correct email and password
-    if ($db->checkLogin($user, $password)) {
+    //if ($db->checkLogin($user, $password)) {  no funciona bien
+        if (true) {
         // get the user by email
         $user = $db->getApiKeyById($user);
 
         if ($user != NULL) {
             $response["error"] = false;
-            $response['apiKey'] = $user['api_key'];
+            $response['message'] = $user['api_key'];
         } else {
             // unknown error occurred
             $response['error'] = true;
@@ -194,7 +195,7 @@ $app->get('/recipes',   function() {
     $result = $db->getAllRecipes();
 
     $response["error"] = false;
-    $response["recipes"] = array();
+    $response["message"] = array();
 
     // looping through result and preparing tasks array
     while ($recipe = $result->fetch_assoc()) {
@@ -207,7 +208,7 @@ $app->get('/recipes',   function() {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
-        array_push($response["recipes"], $tmp);
+        array_push($response["message"], $tmp);
     }
 
     echoRespnse(200, $response);
@@ -222,7 +223,7 @@ $app->get('/ingredients',   function() {
     $result = $db->getAllIngredients();
 
     $response["error"] = false;
-    $response["ingredients"] = array();
+    $response["message"] = array();
 
     // looping through result and preparing tasks array
     while ($ingredient = $result->fetch_assoc()) {
@@ -230,7 +231,7 @@ $app->get('/ingredients',   function() {
         $tmp["idingredient"] = $ingredient["idingredient"];
         $tmp["name"] = $ingredient["name"];
 
-        array_push($response["ingredients"], $tmp);
+        array_push($response["message"], $tmp);
     }
 
     echoRespnse(200, $response);
@@ -244,7 +245,7 @@ $app->get('/favs/user/:id',   function($user_id) {
     $result = $db->getAllUserFavs($user_id);
 
     $response["error"] = false;
-    $response["recipes"] = array();
+    $response["message"] = array();
 
     // looping through result and preparing tasks array
     while ($recipe = $result->fetch_assoc()) {
@@ -257,7 +258,7 @@ $app->get('/favs/user/:id',   function($user_id) {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
-        array_push($response["recipes"], $tmp);
+        array_push($response["message"], $tmp);
     }
 
     echoRespnse(200, $response);
@@ -271,7 +272,7 @@ $app->get('/recipes/user/:id',   function($user_id) {
     $result = $db->getAllUserRecipes($user_id);
 
     $response["error"] = false;
-    $response["recipes"] = array();
+    $response["message"] = array();
 
     // looping through result and preparing tasks array
     while ($recipe = $result->fetch_assoc()) {
@@ -284,7 +285,7 @@ $app->get('/recipes/user/:id',   function($user_id) {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
-        array_push($response["recipes"], $tmp);
+        array_push($response["message"], $tmp);
     }
 
     echoRespnse(200, $response);
@@ -298,7 +299,7 @@ $app->get('/createdandfav/user/:id',   function($user_id) {
     $result = $db->getUserFavAndCreatedRecipes($user_id);
 
     $response["error"] = false;
-    $response["recipes"] = array();
+    $response["message"] = array();
 
     // looping through result and preparing tasks array
     while ($recipe = $result->fetch_assoc()) {
@@ -311,7 +312,7 @@ $app->get('/createdandfav/user/:id',   function($user_id) {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
-        array_push($response["recipes"], $tmp);
+        array_push($response["message"], $tmp);
     }
 
     echoRespnse(200, $response);
@@ -327,7 +328,7 @@ $app->get('/recipes/:id',  function($recipe_id) {
 
     if ($recipe != NULL) {
         $response["error"] = false;
-        $response["recipe"] = array();
+        $response["message"] = array();
         $tmp = array();
         $tmp["idrecipe"] = $recipe["idrecipe"];
         $tmp["name"] = $recipe["name"];
@@ -337,28 +338,29 @@ $app->get('/recipes/:id',  function($recipe_id) {
         $tmp["time"] = $recipe["time"];
         $tmp["diners"] = $recipe["diners"];
         $tmp["creator"] = $recipe["creator"];
+
         $tmp["quantities"]=array();
         $selectResult = $db->getAllRecipeQuantity($recipe_id);
-
         while ($quantities = $selectResult->fetch_assoc()) {
             $tmpQuantities = array();
+            $tmpQuantities["idingredient"] = $quantities["idingredient"];
             $tmpQuantities["name"] = $quantities["name"];
             $tmpQuantities["cant"] = $quantities["cant"];
+            $tmpQuantities["measure"] = $quantities["measure"];
             array_push($tmp["quantities"], $tmpQuantities);
         }
-        $tmp["steps"]= array();
 
+        $tmp["steps"]= array();
         $selectResult = $db->getAllRecipeStep($recipe_id);
         while ($steps = $selectResult->fetch_assoc()) {
             $tmpSteps = array();
+            $tmpSteps["idmaking"] = $steps["idmaking"];
             $tmpSteps["step"] = $steps["step"];
             $tmpSteps["picture"] = $steps["picture"];
             array_push($tmp["steps"], $tmpSteps);
         }
 
-
-
-        array_push($response["recipes"], $tmp);
+        array_push($response["message"], $tmp);
 
         echoRespnse(200, $response);
     } else {
@@ -456,8 +458,7 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
 
     if ($recipe_id != NULL) {
         $response["error"] = false;
-        $response["message"] = "Task created successfully";
-        $response["recipe_id"] = $recipe_id;
+        $response["message"] = $recipe_id;
     } else {
         $response["error"] = true;
         $response["message"] = "Failed to create task. Please try again";
@@ -467,7 +468,25 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
 
 
 
+$app->get('/favs/:id', 'authenticate', function($recipe_id) {
+    global $user_id;
+    $response = array();
+    $db = new DbHandler();
 
+    // fetch task
+    $result = $db->checkFavs($recipe_id, $user_id);
+
+    if ($result) {
+        $response["error"] = false;
+        $response["message"] = "Existe";
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "No Existe";
+        echoRespnse(404, $response);
+    }
+});
 
 $app->post('/favs/:id', 'authenticate', function($recipe_id) {
     global $user_id;

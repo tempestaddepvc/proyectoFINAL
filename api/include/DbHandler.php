@@ -283,7 +283,7 @@ class DbHandler {
 
 
     public function getAllRecipeQuantity($id_recipe) {
-        $stmt = $this->conn->prepare("SELECT i.name, q.cant, q.measure FROM ingredients i, quantity q WHERE i.idingredient = q.idingredient AND q.idrecipe = ?");
+        $stmt = $this->conn->prepare("SELECT q.idingredient, i.name, q.cant, q.measure FROM ingredients i, quantity q WHERE i.idingredient = q.idingredient AND q.idrecipe = ?");
         $stmt->bind_param("i", $id_recipe);
         $stmt->execute();
         $recipes = $stmt->get_result();
@@ -355,7 +355,15 @@ class DbHandler {
 
 
 
-
+    public function checkFavs($idrecipe,$user) {
+        $stmt = $this->conn->prepare("SELECT * FROM favs WHERE idrecipe = ? AND iduser = ?");
+        $stmt->bind_param("is", $idrecipe, $user);
+        $stmt->execute();
+        $stmt->store_result();
+        $num_rows = $stmt->num_rows;
+        $stmt->close();
+        return $num_rows > 0;
+    }
 
 
 

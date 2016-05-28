@@ -28,63 +28,46 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/v1/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3536">
-              <caret line="208" column="34" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+            <state relative-caret-position="527">
+              <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbHandler.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DbHandler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5117">
-              <caret line="301" column="77" selection-start-line="301" selection-start-column="77" selection-end-line="301" selection-end-column="77" />
+            <state relative-caret-position="186">
+              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="132" selection-end-column="5" />
               <folding>
-                <marker date="1463942564423" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
-                <marker date="1463942564423" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
-                <marker date="1463942564423" expanded="true" signature="2887:2924" placeholder="SELECT id fr... users" />
-                <marker date="1463942564423" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
-                <marker date="1463942564423" expanded="true" signature="3774:3814" placeholder="SELECT id FR... users" />
-                <marker date="1463942564423" expanded="true" signature="4314:4354" placeholder="SELECT id fr... users" />
-                <marker date="1463942564423" expanded="true" signature="4961:5062" placeholder="INSERT INTO tasks... " />
-                <marker date="1463942564423" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
-                <marker date="1463942564423" expanded="true" signature="6061:6137" placeholder="INSERT INTO recipes... " />
-                <marker date="1463942564423" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
-                <marker date="1463942564423" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
-                <marker date="1463942564423" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
-                <marker date="1463942564423" expanded="true" signature="7526:7604" placeholder="SELECT r.* F... recipes" />
-                <marker date="1463942564423" expanded="true" signature="7863:7983" placeholder="SELECT i.nam... ingredients" />
-                <marker date="1463942564423" expanded="true" signature="8242:8303" placeholder="SELECT idmak... making" />
-                <marker date="1463942564423" expanded="true" signature="8558:8598" placeholder="SELECT * FRO... recipe" />
-                <marker date="1463942564423" expanded="true" signature="8851:8888" placeholder="SELECT * FRO... recipes" />
-                <marker date="1463942564423" expanded="true" signature="8851:8890" placeholder="SELECT * FRO... recipes" />
-                <marker date="1463942564423" expanded="true" signature="9146:9196" placeholder="DELETE FROM " />
-                <marker date="1463942564423" expanded="true" signature="9477:9498" placeholder="SELECT * FRO... recipes" />
-                <marker date="1463942564423" expanded="true" signature="9702:9727" placeholder="SELECT * FRO... ingredients" />
-                <marker date="1463942564423" expanded="true" signature="10022:10146" placeholder="select * fro... recipes" />
-                <marker date="1463942564423" expanded="true" signature="10749:10863" placeholder="UPDATE tasks... " />
+                <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+                <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+                <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+                <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+                <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+                <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+                <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+                <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+                <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+                <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+                <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+                <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+                <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+                <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+                <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+                <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+                <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+                <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+                <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+                <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+                <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+                <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+                <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+                <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+                <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+                <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbConnect.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/include/DbConnect.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="1810" selection-start-line="0" selection-start-column="1810" selection-end-line="0" selection-end-column="1810" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -109,8 +92,8 @@
         <option value="$PROJECT_DIR$/libs/Slim/Slim.php" />
         <option value="$PROJECT_DIR$/v1/recipes.php" />
         <option value="$PROJECT_DIR$/include/Config.php" />
-        <option value="$PROJECT_DIR$/include/DbConnect.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/include/DbConnect.php" />
         <option value="$PROJECT_DIR$/include/DbHandler.php" />
         <option value="$PROJECT_DIR$/v1/index.php" />
       </list>
@@ -126,10 +109,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -156,22 +138,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -222,8 +196,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,17 +264,20 @@
       <workItem from="1463675184843" duration="8676000" />
       <workItem from="1463685781335" duration="520000" />
       <workItem from="1463937575152" duration="6114000" />
+      <workItem from="1464377580673" duration="4256000" />
+      <workItem from="1464455025879" duration="4713000" />
+      <workItem from="1464468733057" duration="1331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31640000" />
+    <option name="totallyTimeSpent" value="41940000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="953" y="0" width="974" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34446764" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -341,6 +316,116 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/v1/index.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1887">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/v1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4845">
+          <caret line="285" column="59" selection-start-line="285" selection-start-column="59" selection-end-line="285" selection-end-column="59" />
+          <folding>
+            <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+            <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+            <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+            <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+            <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+            <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+            <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+            <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+            <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+            <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbConnect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/v1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3536">
+          <caret line="208" column="34" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5117">
+          <caret line="301" column="77" selection-start-line="301" selection-start-column="77" selection-end-line="301" selection-end-column="77" />
+          <folding>
+            <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+            <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+            <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+            <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+            <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+            <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+            <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+            <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+            <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+            <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbConnect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/v1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -352,29 +437,32 @@
         <state relative-caret-position="5253">
           <caret line="309" column="85" selection-start-line="309" selection-start-column="85" selection-end-line="309" selection-end-column="85" />
           <folding>
-            <marker date="1463942564423" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
-            <marker date="1463942564423" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
-            <marker date="1463942564423" expanded="true" signature="2887:2924" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
-            <marker date="1463942564423" expanded="true" signature="3774:3814" placeholder="SELECT id FR... users" />
-            <marker date="1463942564423" expanded="true" signature="4314:4354" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="4961:5062" placeholder="INSERT INTO tasks... " />
-            <marker date="1463942564423" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
-            <marker date="1463942564423" expanded="true" signature="6061:6137" placeholder="INSERT INTO recipes... " />
-            <marker date="1463942564423" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
-            <marker date="1463942564423" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
-            <marker date="1463942564423" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7526:7604" placeholder="SELECT r.* F... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7863:7983" placeholder="SELECT i.nam... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="8242:8303" placeholder="SELECT idmak... making" />
-            <marker date="1463942564423" expanded="true" signature="8558:8598" placeholder="SELECT * FRO... recipe" />
-            <marker date="1463942564423" expanded="true" signature="8851:8888" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="8851:8890" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9146:9196" placeholder="DELETE FROM " />
-            <marker date="1463942564423" expanded="true" signature="9477:9498" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9702:9727" placeholder="SELECT * FRO... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="10022:10146" placeholder="select * fro... recipes" />
-            <marker date="1463942564423" expanded="true" signature="10749:10863" placeholder="UPDATE tasks... " />
+            <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+            <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+            <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+            <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+            <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+            <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+            <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+            <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+            <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+            <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
           </folding>
         </state>
       </provider>
@@ -392,29 +480,32 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1463942564423" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
-            <marker date="1463942564423" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
-            <marker date="1463942564423" expanded="true" signature="2887:2924" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
-            <marker date="1463942564423" expanded="true" signature="3774:3814" placeholder="SELECT id FR... users" />
-            <marker date="1463942564423" expanded="true" signature="4314:4354" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="4961:5062" placeholder="INSERT INTO tasks... " />
-            <marker date="1463942564423" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
-            <marker date="1463942564423" expanded="true" signature="6061:6137" placeholder="INSERT INTO recipes... " />
-            <marker date="1463942564423" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
-            <marker date="1463942564423" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
-            <marker date="1463942564423" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7526:7604" placeholder="SELECT r.* F... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7863:7983" placeholder="SELECT i.nam... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="8242:8303" placeholder="SELECT idmak... making" />
-            <marker date="1463942564423" expanded="true" signature="8558:8598" placeholder="SELECT * FRO... recipe" />
-            <marker date="1463942564423" expanded="true" signature="8851:8888" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="8851:8890" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9146:9196" placeholder="DELETE FROM " />
-            <marker date="1463942564423" expanded="true" signature="9477:9498" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9702:9727" placeholder="SELECT * FRO... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="10022:10146" placeholder="select * fro... recipes" />
-            <marker date="1463942564423" expanded="true" signature="10749:10863" placeholder="UPDATE tasks... " />
+            <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+            <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+            <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+            <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+            <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+            <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+            <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+            <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+            <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+            <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
           </folding>
         </state>
       </provider>
@@ -470,59 +561,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/PassHash.php">
+    <entry file="file://$PROJECT_DIR$/index.php" />
+    <entry file="file://D:/xampp/htdocs/api/v1/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-3162">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1810" selection-start-line="0" selection-start-column="1810" selection-end-line="0" selection-end-column="1810" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/v1/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="34" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5117">
-          <caret line="301" column="77" selection-start-line="301" selection-start-column="77" selection-end-line="301" selection-end-column="77" />
-          <folding>
-            <marker date="1463942564423" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
-            <marker date="1463942564423" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
-            <marker date="1463942564423" expanded="true" signature="2887:2924" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
-            <marker date="1463942564423" expanded="true" signature="3774:3814" placeholder="SELECT id FR... users" />
-            <marker date="1463942564423" expanded="true" signature="4314:4354" placeholder="SELECT id fr... users" />
-            <marker date="1463942564423" expanded="true" signature="4961:5062" placeholder="INSERT INTO tasks... " />
-            <marker date="1463942564423" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
-            <marker date="1463942564423" expanded="true" signature="6061:6137" placeholder="INSERT INTO recipes... " />
-            <marker date="1463942564423" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
-            <marker date="1463942564423" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
-            <marker date="1463942564423" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7526:7604" placeholder="SELECT r.* F... recipes" />
-            <marker date="1463942564423" expanded="true" signature="7863:7983" placeholder="SELECT i.nam... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="8242:8303" placeholder="SELECT idmak... making" />
-            <marker date="1463942564423" expanded="true" signature="8558:8598" placeholder="SELECT * FRO... recipe" />
-            <marker date="1463942564423" expanded="true" signature="8851:8888" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="8851:8890" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9146:9196" placeholder="DELETE FROM " />
-            <marker date="1463942564423" expanded="true" signature="9477:9498" placeholder="SELECT * FRO... recipes" />
-            <marker date="1463942564423" expanded="true" signature="9702:9727" placeholder="SELECT * FRO... ingredients" />
-            <marker date="1463942564423" expanded="true" signature="10022:10146" placeholder="select * fro... recipes" />
-            <marker date="1463942564423" expanded="true" signature="10749:10863" placeholder="UPDATE tasks... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -531,6 +574,57 @@
         <state relative-caret-position="272">
           <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/PassHash.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/v1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="132" selection-end-column="5" />
+          <folding>
+            <marker date="1464460111826" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464460111826" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464460111826" expanded="true" signature="2887:2924" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="3313:3353" placeholder="SELECT api_k... users" />
+            <marker date="1464460111826" expanded="true" signature="3774:3814" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4314:4354" placeholder="SELECT name users" />
+            <marker date="1464460111826" expanded="true" signature="4961:5062" placeholder="INSERT INTO recipes... " />
+            <marker date="1464460111826" expanded="true" signature="5549:5589" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464460111826" expanded="true" signature="6061:6137" placeholder="INSERT INTO quantity... " />
+            <marker date="1464460111826" expanded="true" signature="6468:6527" placeholder="INSERT INTO making... " />
+            <marker date="1464460111826" expanded="true" signature="6775:6822" placeholder="INSERT INTO favs... " />
+            <marker date="1464460111826" expanded="true" signature="7149:7188" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7445:7539" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="7498:7538" placeholder="select idrec... favs" />
+            <marker date="1464460111826" expanded="true" signature="7876:7954" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="8213:8349" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="8608:8669" placeholder="SELECT idmak... making" />
+            <marker date="1464460111826" expanded="true" signature="8924:8964" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9217:9256" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="9512:9562" placeholder="DELETE FROM " />
+            <marker date="1464460111826" expanded="true" signature="9843:9864" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10068:10093" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464460111826" expanded="true" signature="10388:10512" placeholder="select * fro... recipes" />
+            <marker date="1464460111826" expanded="true" signature="10795:10830" placeholder="SELECT * FRO... favs" />
+            <marker date="1464460111826" expanded="true" signature="10795:10847" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464460111826" expanded="true" signature="11462:11576" placeholder="UPDATE tasks... " />
+          </folding>
         </state>
       </provider>
     </entry>
