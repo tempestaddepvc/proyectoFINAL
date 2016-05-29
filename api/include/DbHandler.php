@@ -87,16 +87,16 @@ class DbHandler {
 
             if (PassHash::check_password($password_hash, $password)) {
                 // User password is correct
-                return TRUE;
+                return 0;
             } else {
                 // user password is incorrect
-                return FALSE;
+                return 2;
             }
         } else {
             $stmt->close();
 
             // user not existed
-            return FALSE;
+            return 1;
         }
     }
 

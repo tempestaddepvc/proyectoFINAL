@@ -8,16 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import dras.finalproyect.App;
 import dras.finalproyect.R;
+import dras.finalproyect.dialogos.DialogoRegistro;
 import dras.finalproyect.pojos.Respuesta;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements DialogoRegistro.DialogRegsListener {
 
     private App.APIinterface servicio;
     private SharedPreferences preferences;
@@ -43,29 +45,37 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ok();
+                if (txtUser.getText().toString().isEmpty() ||  txtPass.getText().toString().isEmpty() )
+                    Toast.makeText(getApplicationContext(), "Los campos usuario y contraseña no pueden estar vacios", Toast.LENGTH_SHORT).show();
+                else
+                    ok();
             }
         });
     }
 
     private void ok() {
-
-
-
         servicio.login(txtUser.getText().toString(), txtPass.getText().toString()).enqueue(new Callback<Respuesta>() {
             @Override
             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                 //No se ha podido loguear
-                Respuesta resuesta = response.body();
-                if (resuesta.getError()) {
-                    Log.e("FAIL1", resuesta.getMessage());
+                Respuesta respuesta = response.body();
+                if (respuesta.getError()) {
+                    //Si usuario no existe
+                    if (respuesta.getMessage().equals("1"))
+                        new DialogoRegistro().show(getSupportFragmentManager(),"Registro");
+                    else if (respuesta.getMessage().equals("2"))
+                    //Si la contraseña es incorrecta
+                        Toast.makeText(getApplicationContext(),"Contraseña Incorrecta",Toast.LENGTH_SHORT).show();
+                    else
+                    //Si ocurrre un reror inesperado
+                        Toast.makeText(getApplicationContext(),"Error Inesperado",Toast.LENGTH_SHORT).show();
+
                 }
                 //Se ha logeado correctamente
                 else {
-                    Log.e("FAIL", "Todo Ok");
                     if (switch1.isChecked())
-                        guardarPref(txtUser.getText().toString(), resuesta.getMessage());
-                    logear(txtUser.getText().toString(), resuesta.getMessage());
+                        guardarPref(txtUser.getText().toString(), respuesta.getMessage());
+                    logear(txtUser.getText().toString(), respuesta.getMessage());
                 }
             }
 
@@ -90,6 +100,31 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString(App.PREF_API, api_key);
         editor.apply();
         Log.e("FAIL", "Guardadas");
+    }
+
+
+    @Override
+    public void onPositiveButtonClick() {
+        registro();
+    }
+
+    private void registro() {
+        servicio.registro(txtUser.getText().toString(),txtPass.getText().toString()).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Respuesta respuesta = response.body();
+                if (respuesta.getError()) {
+                        Toast.makeText(getApplicationContext(),respuesta.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ok();
+                }
+            }
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Log.e("FAIL", t.toString());
+            }
+        });
     }
 
 

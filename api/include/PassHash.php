@@ -26,6 +26,12 @@ class PassHash {
         $new_hash = crypt($password, $full_salt);
         return ($hash == $new_hash);
     }
+    // probar comprobacion
+    public static function c_password($hash, $password) {
+        $full_salt = substr($hash, 0, 29);
+        $new_hash = crypt($password, $full_salt);
+        return $new_hash;
+    }
 
 }
 

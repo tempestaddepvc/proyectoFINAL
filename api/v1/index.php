@@ -151,9 +151,12 @@ $app->post('/login', function() use ($app) {
     $response = array();
 
     $db = new DbHandler();
+
+    //no funciona bien
+    $result = $db->checkLogin($user, $password);
     // check for correct email and password
-    //if ($db->checkLogin($user, $password)) {  no funciona bien
-    if (true) {
+    if ($result==0) {
+    //if (false) {
         // get the user by email
         $user = $db->getApiKeyById($user);
 
@@ -168,7 +171,7 @@ $app->post('/login', function() use ($app) {
     } else {
         // user credentials are wrong
         $response['error'] = true;
-        $response['message'] = 'Login failed. Incorrect credentials';
+        $response['message'] = $result;
     }
 
     echoRespnse(200, $response);
@@ -533,9 +536,17 @@ $app->delete('/favs/:id', 'authenticate', function($recipe_id) {
 
 
 
+//Probar comprobacion
+$app->get('/p/:pass',   function($pass) {
+    $response = array();
 
+    $aa=PassHash::hash($pass);
+    $response["original"] = $pass;
+    $response["encriptada"] = $aa;
+    $response["verificar"] = PassHash::c_password($aa,$pass);
 
-
+    echoRespnse(200, $response);
+});
 
 
 $app->run();
