@@ -6,13 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.pojos.Respuesta;
@@ -53,12 +50,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void ok() {
 
+
+
         servicio.login(txtUser.getText().toString(), txtPass.getText().toString()).enqueue(new Callback<Respuesta>() {
             @Override
             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                 //No se ha podido loguear
                 Respuesta resuesta = response.body();
-                if (resuesta.getError()=="true") {
+                if (resuesta.getError()) {
                     Log.e("FAIL1", resuesta.getMessage());
                 }
                 //Se ha logeado correctamente

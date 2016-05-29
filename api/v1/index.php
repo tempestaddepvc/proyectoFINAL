@@ -153,7 +153,7 @@ $app->post('/login', function() use ($app) {
     $db = new DbHandler();
     // check for correct email and password
     //if ($db->checkLogin($user, $password)) {  no funciona bien
-        if (true) {
+    if (true) {
         // get the user by email
         $user = $db->getApiKeyById($user);
 

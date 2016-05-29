@@ -6,24 +6,20 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
-import java.io.IOException;
-
 import dras.finalproyect.pojos.Recipe;
 import dras.finalproyect.pojos.Respuesta;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 /**
  * Created by Dras on 28/05/2016.
@@ -40,13 +36,17 @@ public class App extends Application {
 
 
     public interface APIinterface {
+        @FormUrlEncoded
         @POST("register")
-        Call<Respuesta> registro(@Query("user") String user, @Query("password") String pass);
+        Call<Respuesta> registro(@Field("user") String user, @Field("password") String pass);
+        @FormUrlEncoded
         @POST("login")
-        Call<Respuesta> login(@Query("user") String user, @Query("password") String pass);
+        Call<Respuesta> login(@Field("user") String user, @Field("password") String pass);
+
 
         @GET("recipes")
         Call<Respuesta> obtenerRecetas();
+
         @GET("ingredients")
         Call<Respuesta> obtenerIngredientes();
 
@@ -63,6 +63,7 @@ public class App extends Application {
         @GET("filter/{name}")
         Call<Respuesta> filtrarNombre(@Path("name") String filtro);
 
+        @FormUrlEncoded
         @POST("recipes")
         Call<Respuesta> registrarReceta(@Header(AUTH) String key, @Body Recipe receta);
 
