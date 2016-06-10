@@ -13,8 +13,8 @@ public class Recipe {
     private Integer time;
     private Integer diners;
     private String creator;
-    private List<Quantity> quantities = new ArrayList<Quantity>();
-    private List<Step> steps = new ArrayList<Step>();
+    private List<Quantity> quantities = null;
+    private List<Step> steps = null;
 
     /**
      * No args constructor for use in serialization
@@ -22,6 +22,29 @@ public class Recipe {
      */
     public Recipe() {
     }
+
+//    /**
+//     *
+//     * @param picture
+//     * @param time
+//     * @param idrecipe
+//     * @param details
+//     * @param name
+//     * @param diners
+//     * @param difficulty
+//     * @param creator
+//     */
+//    public Recipe(Integer idrecipe, String name, String details, String picture, Integer difficulty, Integer time, Integer diners, String creator) {
+//        this.idrecipe = idrecipe;
+//        this.name = name;
+//        this.details = details;
+//        this.picture = picture;
+//        this.difficulty = difficulty;
+//        this.time = time;
+//        this.diners = diners;
+//        this.creator = creator;
+//    }
+
 
     /**
      * 
@@ -45,7 +68,9 @@ public class Recipe {
         this.time = time;
         this.diners = diners;
         this.creator = creator;
+        this.quantities = new ArrayList<Quantity>();
         this.quantities = quantities;
+        this.steps = new ArrayList<Step>();
         this.steps = steps;
     }
 

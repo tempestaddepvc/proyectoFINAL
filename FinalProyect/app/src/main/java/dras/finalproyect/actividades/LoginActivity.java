@@ -34,6 +34,12 @@ public class LoginActivity extends AppCompatActivity implements DialogoRegistro.
         setContentView(R.layout.activity_login);
         servicio = App.getServicio();
         preferences = getSharedPreferences(App.PREF_NAME, MODE_PRIVATE);
+
+        String user = preferences.getString(App.PREF_USER, "");
+        String api = preferences.getString(App.PREF_API, "");
+        if (!user.isEmpty() && !api.isEmpty())
+            logear(user,api);
+
         init();
     }
 
@@ -74,8 +80,8 @@ public class LoginActivity extends AppCompatActivity implements DialogoRegistro.
                 //Se ha logeado correctamente
                 else {
                     if (switch1.isChecked())
-                        guardarPref(txtUser.getText().toString(), respuesta.getMessage());
-                    logear(txtUser.getText().toString(), respuesta.getMessage());
+                        guardarPref(txtUser.getText().toString(), respuesta.getMessage().toString());
+                    logear(txtUser.getText().toString(), respuesta.getMessage().toString());
                 }
             }
 
@@ -114,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements DialogoRegistro.
             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                 Respuesta respuesta = response.body();
                 if (respuesta.getError()) {
-                        Toast.makeText(getApplicationContext(),respuesta.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),respuesta.getMessage().toString(),Toast.LENGTH_SHORT).show();
                 }
                 else {
                     ok();

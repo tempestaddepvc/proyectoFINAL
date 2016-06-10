@@ -178,6 +178,7 @@ $app->post('/login', function() use ($app) {
 });
 
 
+
 /**
  * Creating new task in db
  * method POST

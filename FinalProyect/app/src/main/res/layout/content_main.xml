@@ -18,4 +18,11 @@
         android:id="@+id/list_recipes">
 
     </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/lblNoHayRecetas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="No se encontraron recetas"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class App extends Application {
         Call<Respuesta> obtenerFavs(@Path("id") String idusuario);
         @GET("recipes/user/{id}")
         Call<Respuesta> obtenerCreados(@Path("id") String idusuario);
-        @GET("createandfav/user/{id}")
+        @GET("createdandfav/user/{id}")
         Call<Respuesta> obtenerFavsAndCreados(@Path("id") String idusuario);
 
         @GET("recipes/{id}")

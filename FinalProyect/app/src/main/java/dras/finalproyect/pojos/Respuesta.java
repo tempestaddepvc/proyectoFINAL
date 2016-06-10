@@ -5,7 +5,7 @@ package dras.finalproyect.pojos;
 public class Respuesta {
 
     private Boolean error;
-    private String message;
+    private Object message;
 
     /**
      * No args constructor for use in serialization
@@ -19,7 +19,7 @@ public class Respuesta {
      * @param message
      * @param error
      */
-    public Respuesta(Boolean error, String message) {
+    public Respuesta(Boolean error, Object message) {
         this.error = error;
         this.message = message;
     }
@@ -47,7 +47,7 @@ public class Respuesta {
      * @return
      *     The message
      */
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
