@@ -1,9 +1,12 @@
 
 package dras.finalproyect.pojos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
-public class Recipe {
+public class Recipe implements Parcelable {
 
     private Integer idrecipe;
     private String name;
@@ -23,27 +26,6 @@ public class Recipe {
     public Recipe() {
     }
 
-//    /**
-//     *
-//     * @param picture
-//     * @param time
-//     * @param idrecipe
-//     * @param details
-//     * @param name
-//     * @param diners
-//     * @param difficulty
-//     * @param creator
-//     */
-//    public Recipe(Integer idrecipe, String name, String details, String picture, Integer difficulty, Integer time, Integer diners, String creator) {
-//        this.idrecipe = idrecipe;
-//        this.name = name;
-//        this.details = details;
-//        this.picture = picture;
-//        this.difficulty = difficulty;
-//        this.time = time;
-//        this.diners = diners;
-//        this.creator = creator;
-//    }
 
 
     /**
@@ -68,9 +50,7 @@ public class Recipe {
         this.time = time;
         this.diners = diners;
         this.creator = creator;
-        this.quantities = new ArrayList<Quantity>();
         this.quantities = quantities;
-        this.steps = new ArrayList<Step>();
         this.steps = steps;
     }
 
@@ -254,4 +234,50 @@ public class Recipe {
         this.steps = steps;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.idrecipe);
+        dest.writeString(this.name);
+        dest.writeString(this.details);
+        dest.writeString(this.picture);
+        dest.writeValue(this.difficulty);
+        dest.writeValue(this.time);
+        dest.writeValue(this.diners);
+        dest.writeString(this.creator);
+        dest.writeList(this.quantities);
+        dest.writeList(this.steps);
+    }
+
+    protected Recipe(Parcel in) {
+        this.idrecipe = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.name = in.readString();
+        this.details = in.readString();
+        this.picture = in.readString();
+        this.difficulty = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.time = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.diners = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.creator = in.readString();
+        this.quantities = new ArrayList<Quantity>();
+        in.readList(this.quantities, Quantity.class.getClassLoader());
+        this.steps = new ArrayList<Step>();
+        in.readList(this.steps, Step.class.getClassLoader());
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel source) {
+            return new Recipe(source);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 }

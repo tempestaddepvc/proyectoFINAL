@@ -1,7 +1,10 @@
 
 package dras.finalproyect.pojos;
 
-public class Quantity {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Quantity implements Parcelable {
 
     private Integer idingredient;
     private String name;
@@ -101,4 +104,35 @@ public class Quantity {
         this.measure = measure;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.idingredient);
+        dest.writeString(this.name);
+        dest.writeValue(this.cant);
+        dest.writeString(this.measure);
+    }
+
+    protected Quantity(Parcel in) {
+        this.idingredient = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.name = in.readString();
+        this.cant = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.measure = in.readString();
+    }
+
+    public static final Parcelable.Creator<Quantity> CREATOR = new Parcelable.Creator<Quantity>() {
+        @Override
+        public Quantity createFromParcel(Parcel source) {
+            return new Quantity(source);
+        }
+
+        @Override
+        public Quantity[] newArray(int size) {
+            return new Quantity[size];
+        }
+    };
 }

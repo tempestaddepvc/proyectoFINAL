@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     private TextView mEmptyView;
     private LinearLayoutManager mLayoutManager;
     private Callback<Respuesta> callback;
+    private App.APIinterface servicio;
 
     public static void start(Activity a) {
         Intent intent = new Intent(a, MainActivity.class);
@@ -169,10 +170,39 @@ public class MainActivity extends AppCompatActivity
     // Cuando se hace click sobre un elemento de la lista.
     @Override
     public void onItemClick(View view, Recipe recipe, int position) {
-        Snackbar.make(lstRecipes, "ha pulsado " + recipe.getName(),
-                Snackbar.LENGTH_SHORT).show();
+        obtenerDatos(recipe.getIdrecipe());
     }
 
+    private void obtenerDatos(int idRecipe) {
+        servicio = App.getServicio();
+        servicio.obtenerDatosReceta(idRecipe).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Respuesta respuesta = response.body();
+                if (!respuesta.getError()) {
+                    Gson gson = new Gson();
+                    String a = gson.toJson(respuesta.getMessage());
+                    ArrayList<Recipe> recipes = gson.fromJson(a, new TypeToken<ArrayList<Recipe>>() {
+                    }.getType());
+
+                    actividadDetalles(recipes.get(0));
+                }
+                //Se ha producido un error
+                else {
+                    Log.e("FAIL1 - Main:", respuesta.getMessage().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Log.e("FAIL - Details", t.toString());
+            }
+        });
+    }
+
+    private void actividadDetalles(Recipe recipe) {
+        RecipeDetailsActivity.start(this,recipe);
+    }
 
     @Override
     public void onBackPressed() {

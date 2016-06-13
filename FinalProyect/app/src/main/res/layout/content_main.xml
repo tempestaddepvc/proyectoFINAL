@@ -24,5 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="No se encontraron recetas"
+        android:layout_centerInParent="true"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 </RelativeLayout>
