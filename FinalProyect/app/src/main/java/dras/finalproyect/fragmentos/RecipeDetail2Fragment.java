@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 
+import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.adaptadores.RecipePasosAdapter;
 import dras.finalproyect.pojos.Recipe;
@@ -28,20 +29,16 @@ public class RecipeDetail2Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static RecipeDetail2Fragment newInstance(Recipe recipe) {
+    public static RecipeDetail2Fragment newInstance() {
         RecipeDetail2Fragment fragment = new RecipeDetail2Fragment();
-        Bundle args = new Bundle();
-        args.putParcelable(ARG_RECIPE, recipe);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecipe = getArguments().getParcelable(ARG_RECIPE);
-        }
+            mRecipe = App.mRecipeAcutal;
+
     }
 
     @Override
@@ -62,7 +59,7 @@ public class RecipeDetail2Fragment extends Fragment {
         //Lista de ingredientes
         rvLista = (RecyclerView) getView().findViewById(R.id.rvLista);
         mAdapter = new RecipePasosAdapter((ArrayList<Step>) mRecipe.getSteps());
-        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, true);
+        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
 
         rvLista.setAdapter(mAdapter);
         rvLista.setLayoutManager(mLayoutManager);

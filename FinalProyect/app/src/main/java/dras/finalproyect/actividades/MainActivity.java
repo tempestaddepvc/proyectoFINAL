@@ -185,7 +185,8 @@ public class MainActivity extends AppCompatActivity
                     ArrayList<Recipe> recipes = gson.fromJson(a, new TypeToken<ArrayList<Recipe>>() {
                     }.getType());
 
-                    actividadDetalles(recipes.get(0));
+                    App.mRecipeAcutal=recipes.get(0);
+                    actividadDetalles();
                 }
                 //Se ha producido un error
                 else {
@@ -200,8 +201,8 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void actividadDetalles(Recipe recipe) {
-        RecipeDetailsActivity.start(this,recipe);
+    private void actividadDetalles() {
+        RecipeDetailsActivity.start(this);
     }
 
     @Override

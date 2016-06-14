@@ -454,6 +454,10 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
     $time =$recipe["time"];
     $diners =$recipe["diners"];
 
+    $step=$recipe["step"];
+    $quantity=$recipe["quantity"];
+
+
     global $user_id;
     $db = new DbHandler();
 
@@ -467,6 +471,7 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
         $response["error"] = true;
         $response["message"] = "Failed to create task. Please try again";
     }
+
     echoRespnse(201, $response);
 });
 

@@ -2,46 +2,35 @@ package dras.finalproyect.actividades;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.ArrayList;
 
 import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.fragmentos.RecipeDetail1Fragment;
 import dras.finalproyect.fragmentos.RecipeDetail2Fragment;
+import dras.finalproyect.fragmentos.RecipeEdit1Fragment;
+import dras.finalproyect.fragmentos.RecipeEdit2Fragment;
 import dras.finalproyect.pojos.Recipe;
-import dras.finalproyect.pojos.Respuesta;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class RecipeDetailsActivity extends AppCompatActivity {
-
+public class RecipeEditActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
 
     private ViewPager mViewPager;
 
 
-    public static void start(Activity a) {
-        Intent intent = new Intent(a, RecipeDetailsActivity.class);
-        a.startActivity(intent);
+    public static void startForResult(Activity a, int requestCode) {
+        Intent intent = new Intent(a, RecipeEditActivity.class);
+        a.startActivityForResult(intent,requestCode);
     }
 
     @Override
@@ -51,6 +40,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -89,8 +80,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        RecipeDetail1Fragment frgDetails;
-        RecipeDetail2Fragment frgMaking;
+        RecipeEdit1Fragment frgDetails;
+        RecipeEdit2Fragment frgMaking;
 
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -102,11 +93,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     if (frgDetails == null)
-                        frgDetails = RecipeDetail1Fragment.newInstance();
+                        frgDetails = RecipeEdit1Fragment.newInstance();
                     return frgDetails;
                 case 1:
                     if (frgMaking == null)
-                        frgMaking = RecipeDetail2Fragment.newInstance();
+                        frgMaking = RecipeEdit2Fragment.newInstance();
                     return frgMaking;
             }
             return null;

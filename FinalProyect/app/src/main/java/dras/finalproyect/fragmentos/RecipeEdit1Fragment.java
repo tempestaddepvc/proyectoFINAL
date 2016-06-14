@@ -6,11 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -18,26 +20,26 @@ import java.util.ArrayList;
 
 import dras.finalproyect.App;
 import dras.finalproyect.R;
+import dras.finalproyect.adaptadores.EditIngredientsAdapter;
 import dras.finalproyect.adaptadores.RecipeIngredientsAdapter;
 import dras.finalproyect.pojos.Quantity;
 import dras.finalproyect.pojos.Recipe;
 
 
-public class RecipeDetail1Fragment extends Fragment {
+public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdapter.OnItemClickListener {
 
-    private static final String ARG_RECIPE = "recipe";
     private Recipe mRecipe;
     private RecyclerView rvLista;
-    private RecipeIngredientsAdapter mAdapter;
+    private EditIngredientsAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
 
-    public RecipeDetail1Fragment() {
+    public RecipeEdit1Fragment() {
         // Required empty public constructor
     }
 
 
-    public static RecipeDetail1Fragment newInstance() {
-        RecipeDetail1Fragment fragment = new RecipeDetail1Fragment();
+    public static RecipeEdit1Fragment newInstance() {
+        RecipeEdit1Fragment fragment = new RecipeEdit1Fragment();
         return fragment;
     }
 
@@ -88,13 +90,41 @@ public class RecipeDetail1Fragment extends Fragment {
 
         //Lista de ingredientes
         rvLista = (RecyclerView) getView().findViewById(R.id.rvLista);
-        mAdapter = new RecipeIngredientsAdapter((ArrayList<Quantity>) mRecipe.getQuantities());
+        mAdapter = new EditIngredientsAdapter((ArrayList<Quantity>) mRecipe.getQuantities());
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        mAdapter.setOnItemClickListener(this);
 
         rvLista.setAdapter(mAdapter);
         rvLista.setLayoutManager(mLayoutManager);
         rvLista.setItemAnimator(new DefaultItemAnimator());
 
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP |
+                        ItemTouchHelper.DOWN,
+                        ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(RecyclerView recyclerView,
+                                          RecyclerView.ViewHolder viewHolder,
+                                          RecyclerView.ViewHolder target) {
+                        final int fromPos = viewHolder.getAdapterPosition();
+                        final int toPos = target.getAdapterPosition();
+                        mAdapter.swapItems(fromPos, toPos);
+                        return true;
+                    }
+
+                    @Override
+                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                        // Se elimina el elemento.
+                        mAdapter.removeItem(viewHolder.getAdapterPosition());
+                    }
+                });
+        itemTouchHelper.attachToRecyclerView(rvLista);
+    }
+
+    @Override
+    public void onIngredientClick(View view, Quantity ingredient, int position) {
+        Toast.makeText(getContext(),"Al hacer click Ingredient",Toast.LENGTH_SHORT).show();
     }
 }
 

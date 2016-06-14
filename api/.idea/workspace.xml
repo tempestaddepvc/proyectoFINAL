@@ -28,8 +28,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/v1/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="297" column="11" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="34" />
+            <state relative-caret-position="443">
+              <caret line="459" column="0" selection-start-line="459" selection-start-column="0" selection-end-line="459" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,7 +140,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,6 +197,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,11 +272,12 @@
       <workItem from="1464546649308" duration="6355000" />
       <workItem from="1465595770838" duration="819000" />
       <workItem from="1465597861881" duration="1168000" />
+      <workItem from="1465861502266" duration="875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54000000" />
+    <option name="totallyTimeSpent" value="54875000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -319,6 +320,49 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/v1/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/DbHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <marker date="1464553244077" expanded="true" signature="1000:1054" placeholder="INSERT INTO users... " />
+            <marker date="1464553244077" expanded="true" signature="1962:1999" placeholder="SELECT pass users" />
+            <marker date="1464553244077" expanded="true" signature="2876:2913" placeholder="SELECT name users" />
+            <marker date="1464553244077" expanded="true" signature="3302:3342" placeholder="SELECT api_k... users" />
+            <marker date="1464553244077" expanded="true" signature="3763:3803" placeholder="SELECT name users" />
+            <marker date="1464553244077" expanded="true" signature="4303:4343" placeholder="SELECT name users" />
+            <marker date="1464553244077" expanded="true" signature="4950:5051" placeholder="INSERT INTO recipes... " />
+            <marker date="1464553244077" expanded="true" signature="5538:5578" placeholder="INSERT INTO ingredients... " />
+            <marker date="1464553244077" expanded="true" signature="6050:6126" placeholder="INSERT INTO quantity... " />
+            <marker date="1464553244077" expanded="true" signature="6457:6516" placeholder="INSERT INTO making... " />
+            <marker date="1464553244077" expanded="true" signature="6764:6811" placeholder="INSERT INTO favs... " />
+            <marker date="1464553244077" expanded="true" signature="7138:7177" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464553244077" expanded="true" signature="7434:7528" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464553244077" expanded="true" signature="7487:7527" placeholder="select idrec... favs" />
+            <marker date="1464553244077" expanded="true" signature="7865:7943" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464553244077" expanded="true" signature="8202:8338" placeholder="SELECT i.nam... ingredients" />
+            <marker date="1464553244077" expanded="true" signature="8597:8658" placeholder="SELECT idmak... making" />
+            <marker date="1464553244077" expanded="true" signature="8913:8953" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464553244077" expanded="true" signature="9206:9245" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464553244077" expanded="true" signature="9501:9551" placeholder="DELETE FROM " />
+            <marker date="1464553244077" expanded="true" signature="9832:9853" placeholder="SELECT * FRO... recipes" />
+            <marker date="1464553244077" expanded="true" signature="10057:10082" placeholder="SELECT * FRO... ingredients" />
+            <marker date="1464553244077" expanded="true" signature="10377:10501" placeholder="select * fro... recipes" />
+            <marker date="1464553244077" expanded="true" signature="10784:10819" placeholder="SELECT * FRO... favs" />
+            <marker date="1464553244077" expanded="true" signature="10784:10836" placeholder="SELECT r.* F... recipes" />
+            <marker date="1464553244077" expanded="true" signature="11451:11565" placeholder="UPDATE tasks... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/v1/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -754,8 +798,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/v1/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="297" column="11" selection-start-line="297" selection-start-column="11" selection-end-line="297" selection-end-column="34" />
+        <state relative-caret-position="443">
+          <caret line="459" column="0" selection-start-line="459" selection-start-column="0" selection-end-line="459" selection-end-column="0" />
           <folding />
         </state>
       </provider>

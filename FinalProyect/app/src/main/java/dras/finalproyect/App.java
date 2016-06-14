@@ -33,6 +33,7 @@ public class App extends Application {
     private static APIinterface servicio;
     public static String api_key;
     public static String user_id;
+    public static Recipe mRecipeAcutal;
 
 
     public interface APIinterface {

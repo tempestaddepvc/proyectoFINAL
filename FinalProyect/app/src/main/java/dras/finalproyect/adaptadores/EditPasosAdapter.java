@@ -13,20 +13,50 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import dras.finalproyect.R;
-import dras.finalproyect.pojos.Quantity;
 import dras.finalproyect.pojos.Step;
 
 /**
  * Created by Dras on 01/06/2016.
  */
 // Adaptador para la lista de recetas.
-public class RecipePasosAdapter extends RecyclerView.Adapter<RecipePasosAdapter.ViewHolder> {
+public class EditPasosAdapter extends RecyclerView.Adapter<EditPasosAdapter.ViewHolder> {
 
     private final ArrayList<Step> mDatos;
+    private OnItemClickListener onItemClickListener;
 
     // Constructor.
-    public RecipePasosAdapter(ArrayList<Step> datos) {
+    public EditPasosAdapter(ArrayList<Step> datos) {
         mDatos = datos;
+    }
+
+    // Interfaz que debe implementar el listener para cuando se haga click sobre un elemento.
+    public interface OnItemClickListener {
+        void onStepClick(View view, Step step, int position);
+    }
+
+    // Establece el listener a informar cuando se hace click sobre un ítem.
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
+    // Elimina un elemento de la lista.
+    public void removeItem(int position) {
+        mDatos.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    // Inserta un elemento a la lista.
+    public void addItem(Step step) {
+        mDatos.add(step);
+        notifyItemInserted(mDatos.size()-1);
+    }
+
+    // Intercambia dos elementos de la lista.
+    public void swapItems(int from, int to) {
+        // Se realiza el intercambio.
+        Collections.swap(mDatos, from, to);
+        // Se notifica el movimiento.
+        notifyItemMoved(from, to);
     }
 
     // Retorna el número de ítems de datos.
@@ -43,6 +73,18 @@ public class RecipePasosAdapter extends RecyclerView.Adapter<RecipePasosAdapter.
 
         // Se crea el contenedor de vistas para la fila.
         final ViewHolder viewHolder = new ViewHolder(itemView);
+        // Cuando se hace click sobre el elemento.
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    // Se informa al listener.
+                    onItemClickListener.onStepClick(v,
+                            mDatos.get(viewHolder.getAdapterPosition()),
+                            viewHolder.getAdapterPosition());
+                }
+            }
+        });
 
          // Se retorna el contenedor.
         return viewHolder;
@@ -52,7 +94,7 @@ public class RecipePasosAdapter extends RecyclerView.Adapter<RecipePasosAdapter.
     // Cuando se deben escribir los datos en las subvistas de la
     // vista correspondiente al ítem.
     @Override
-    public void onBindViewHolder(RecipePasosAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(EditPasosAdapter.ViewHolder holder, int position) {
         Step step = mDatos.get(position);
         holder.bind(step);
     }

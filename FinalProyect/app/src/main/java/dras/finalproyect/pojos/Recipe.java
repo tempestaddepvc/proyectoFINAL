@@ -24,6 +24,8 @@ public class Recipe implements Parcelable {
      * 
      */
     public Recipe() {
+        quantities=new ArrayList<Quantity>();
+        steps=new ArrayList<Step>();
     }
 
 
