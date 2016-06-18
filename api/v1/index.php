@@ -462,9 +462,21 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
     if ($recipe_id != NULL) {
         $response["error"] = false;
         $response["message"] = $recipe_id;
+
+        foreach ($recipe["quantities"] as &$quantity){
+          $quantity["idingredient"]= $db->returnIngredient($quantity["name"]);
+          if($quantity["idingredient"] != NULL){
+            $db->createQuantity($recipe_id,$quantity["idingredient"],$quantity["cant"],$quantity["measure"]);
+          }
+        }
+        foreach ($recipe["steps"] as &$step) {
+          $db->createStep($recipe_id,$step["step"],$step["picture"]);
+        }
+
+
     } else {
         $response["error"] = true;
-        $response["message"] = "Failed to create task. Please try again";
+        $response["message"] = "Failed to create recipe. Please try again";
     }
     echoRespnse(201, $response);
 });

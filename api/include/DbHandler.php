@@ -366,6 +366,21 @@ class DbHandler {
     }
 
 
+    public function returnIngredient($name){
+      $stmt = $this->conn->prepare("SELECT idingredient FROM ingredients WHERE name=?");
+      $stmt->bind_param("s", $name);
+      $stmt->execute();
+      $ingredient =$stmt->get_result()->fetch_assoc();
+      if(is_null(ingredient['idingredient'])){
+        $idingredient=createIngredient($name);
+      }else{
+        $idingredient=ingredient['idingredient'];
+      }
+      $stmt->close();
+      return $idingredient;
+
+    }
+
 
 
 
