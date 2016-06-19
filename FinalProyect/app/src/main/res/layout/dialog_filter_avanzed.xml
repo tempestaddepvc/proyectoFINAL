@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/side_nav_bar"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entre:" />
+
+        <TextView
+            android:id="@+id/lblMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Y " />
+        <TextView
+            android:id="@+id/lblMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min" />
+    </LinearLayout>
+
+
+    <com.appyvet.rangebar.RangeBar
+        android:id="@+id/rbTiempo"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        custom:tickEnd="200"
+        custom:tickInterval="5"
+        custom:tickStart="5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comensales" />
+
+        <TextView
+            android:id="@+id/lblComensales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10" />
+    </LinearLayout>
+
+    <com.appyvet.rangebar.RangeBar
+        android:id="@+id/rbComensales"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        custom:rangeBar="false"
+        custom:tickEnd="10"
+        custom:tickInterval="1"
+        custom:tickStart="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dificultad:" />
+
+        <TextView
+            android:id="@+id/lblDificultad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hard" />
+    </LinearLayout>
+
+    <com.appyvet.rangebar.RangeBar
+        android:id="@+id/rbDificultad"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        custom:rangeBar="false"
+        custom:tickEnd="2"
+        custom:tickInterval="1"
+        custom:tickStart="0"
+        />
+</LinearLayout>

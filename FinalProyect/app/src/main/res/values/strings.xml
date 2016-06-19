@@ -11,4 +11,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_recipe_edit">EditarActivity</string>
+    <string name="titleCreadoPor">Creado Por:</string>
+    <string name="creador">Manuel Espinosa</string>
+    <string name="titleVersion">Version:</string>
+    <string name="version">1.0.5</string>
+
 </resources>

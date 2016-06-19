@@ -6,6 +6,9 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dras.finalproyect.App;
+
 public class Recipe implements Parcelable {
 
     private Integer idrecipe;
@@ -21,17 +24,22 @@ public class Recipe implements Parcelable {
 
     /**
      * No args constructor for use in serialization
-     * 
      */
     public Recipe() {
-        quantities=new ArrayList<Quantity>();
-        steps=new ArrayList<Step>();
+        idrecipe = 0;
+        name = "";
+        details = "";
+        picture = "";
+        difficulty = 0;
+        diners = 0;
+        time = 0;
+        creator = App.user_id;
+        quantities = new ArrayList<Quantity>();
+        steps = new ArrayList<Step>();
     }
 
 
-
     /**
-     * 
      * @param picture
      * @param time
      * @param idrecipe
@@ -57,180 +65,140 @@ public class Recipe implements Parcelable {
     }
 
     /**
-     * 
-     * @return
-     *     The idrecipe
+     * @return The idrecipe
      */
     public Integer getIdrecipe() {
         return idrecipe;
     }
 
     /**
-     * 
-     * @param idrecipe
-     *     The idrecipe
+     * @param idrecipe The idrecipe
      */
     public void setIdrecipe(Integer idrecipe) {
         this.idrecipe = idrecipe;
     }
 
     /**
-     * 
-     * @return
-     *     The name
+     * @return The name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 
-     * @param name
-     *     The name
+     * @param name The name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * 
-     * @return
-     *     The details
+     * @return The details
      */
     public String getDetails() {
         return details;
     }
 
     /**
-     * 
-     * @param details
-     *     The details
+     * @param details The details
      */
     public void setDetails(String details) {
         this.details = details;
     }
 
     /**
-     * 
-     * @return
-     *     The picture
+     * @return The picture
      */
     public String getPicture() {
         return picture;
     }
 
     /**
-     * 
-     * @param picture
-     *     The picture
+     * @param picture The picture
      */
     public void setPicture(String picture) {
         this.picture = picture;
     }
 
     /**
-     * 
-     * @return
-     *     The difficulty
+     * @return The difficulty
      */
     public Integer getDifficulty() {
         return difficulty;
     }
 
     /**
-     * 
-     * @param difficulty
-     *     The difficulty
+     * @param difficulty The difficulty
      */
     public void setDifficulty(Integer difficulty) {
         this.difficulty = difficulty;
     }
 
     /**
-     * 
-     * @return
-     *     The time
+     * @return The time
      */
     public Integer getTime() {
         return time;
     }
 
     /**
-     * 
-     * @param time
-     *     The time
+     * @param time The time
      */
     public void setTime(Integer time) {
         this.time = time;
     }
 
     /**
-     * 
-     * @return
-     *     The diners
+     * @return The diners
      */
     public Integer getDiners() {
         return diners;
     }
 
     /**
-     * 
-     * @param diners
-     *     The diners
+     * @param diners The diners
      */
     public void setDiners(Integer diners) {
         this.diners = diners;
     }
 
     /**
-     * 
-     * @return
-     *     The creator
+     * @return The creator
      */
     public String getCreator() {
         return creator;
     }
 
     /**
-     * 
-     * @param creator
-     *     The creator
+     * @param creator The creator
      */
     public void setCreator(String creator) {
         this.creator = creator;
     }
 
     /**
-     * 
-     * @return
-     *     The quantities
+     * @return The quantities
      */
     public List<Quantity> getQuantities() {
         return quantities;
     }
 
     /**
-     * 
-     * @param quantities
-     *     The quantities
+     * @param quantities The quantities
      */
     public void setQuantities(List<Quantity> quantities) {
         this.quantities = quantities;
     }
 
     /**
-     * 
-     * @return
-     *     The steps
+     * @return The steps
      */
     public List<Step> getSteps() {
         return steps;
     }
 
     /**
-     * 
-     * @param steps
-     *     The steps
+     * @param steps The steps
      */
     public void setSteps(List<Step> steps) {
         this.steps = steps;

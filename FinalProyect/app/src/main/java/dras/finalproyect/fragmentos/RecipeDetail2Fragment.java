@@ -37,7 +37,7 @@ public class RecipeDetail2Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            mRecipe = App.mRecipeAcutal;
+            mRecipe = App.mRecipeActual;
 
     }
 

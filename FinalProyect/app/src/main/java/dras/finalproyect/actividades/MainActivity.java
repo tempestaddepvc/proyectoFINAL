@@ -2,10 +2,9 @@ package dras.finalproyect.actividades;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,19 +19,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.adaptadores.RecipesAdapter;
-import dras.finalproyect.dialogos.DialogoRegistro;
+import dras.finalproyect.dialogos.DialogoFiltroAvanzado;
+import dras.finalproyect.dialogos.DialogoFiltroName;
+import dras.finalproyect.dialogos.InfoDialogFragment;
 import dras.finalproyect.pojos.Recipe;
 import dras.finalproyect.pojos.Respuesta;
 import retrofit2.Call;
@@ -40,8 +38,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RecipesAdapter.OnItemClickListener {
+        implements DialogoFiltroName.DialogFilterNameListener, DialogoFiltroAvanzado.DialogFilterAvanzedListener, NavigationView.OnNavigationItemSelectedListener, RecipesAdapter.OnItemClickListener {
 
+    private static final int CREAR_RECIPE = 1;
     private Toolbar toolbar;
     private RecipesAdapter mAdaptador;
     private RecyclerView lstRecipes;
@@ -98,6 +97,17 @@ public class MainActivity extends AppCompatActivity
         };
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case CREAR_RECIPE:
+                    mAdaptador.add(App.mRecipeActual);
+            }
+        }
+    }
+
     private void getLista() {
         App.getServicio().obtenerRecetas().enqueue(callback);
     }
@@ -152,12 +162,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void configFab() {
+        final Activity activity=this;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                App.mRecipeActual=new Recipe();
+                RecipeEditActivity.startForResult(activity, CREAR_RECIPE);
             }
         });
     }
@@ -185,7 +196,7 @@ public class MainActivity extends AppCompatActivity
                     ArrayList<Recipe> recipes = gson.fromJson(a, new TypeToken<ArrayList<Recipe>>() {
                     }.getType());
 
-                    App.mRecipeAcutal=recipes.get(0);
+                    App.mRecipeActual =recipes.get(0);
                     actividadDetalles();
                 }
                 //Se ha producido un error
@@ -229,10 +240,15 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.filterName:
+                new DialogoFiltroName().show(getSupportFragmentManager(),"Filtrar por nombre");
+                return true;
+            case R.id.filterAvanced:
+                new DialogoFiltroAvanzado().show(getSupportFragmentManager(),"Filtrar Avanzado");
+                return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -242,24 +258,49 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch (id) {
+            case R.id.option1:
+                    getLista();
+                break;
+            case R.id.option2:
+                    getCreated();
+                break;
+            case R.id.option3:
+                    getFavs();
+                break;
+            case R.id.option4:
+                    getCreatedAndFavs();
+                break;
+            case R.id.aboutUs:
+                    InfoDialogFragment frgMiDialogo = new InfoDialogFragment();
+                    frgMiDialogo.show(getSupportFragmentManager(), "Info");
+                break;
+            case R.id.logout:
+                SharedPreferences.Editor editor = getSharedPreferences(App.PREF_NAME, MODE_PRIVATE).edit();
+                editor.putString(App.PREF_USER, "");
+                editor.putString(App.PREF_API, "");
+                editor.apply();
 
-        if (id == R.id.nav_camera) {
-getLista();            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-getCreated();
-        } else if (id == R.id.nav_slideshow) {
-getFavs();
-        } else if (id == R.id.nav_manage) {
-            getCreatedAndFavs();
-        } else if (id == R.id.nav_share) {
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+                break;
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+
+    @Override
+    public void onAvancedFilter(int min, int max, int comensales, int dificultad) {
+        App.getServicio().filtrarAvanzado(min,max,comensales,dificultad).enqueue(callback);
+    }
+
+    @Override
+    public void onFilterName(String filtro) {
+            App.getServicio().filtrarNombre(filtro).enqueue(callback);
+    }
 }

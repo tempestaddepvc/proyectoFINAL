@@ -30,6 +30,14 @@ public class RecipeDetail1Fragment extends Fragment {
     private RecyclerView rvLista;
     private RecipeIngredientsAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private TextView lblNombre ;
+    private TextView lblCreador ;
+    private TextView lblDificultad;
+    private TextView lblComensales ;
+    private TextView lblTiempo;
+    private TextView lblDescripcion ;
+    private ImageView imgFoto ;
+
 
     public RecipeDetail1Fragment() {
         // Required empty public constructor
@@ -45,7 +53,7 @@ public class RecipeDetail1Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            mRecipe = App.mRecipeAcutal;
+            mRecipe = App.mRecipeActual;
 
     }
 
@@ -64,27 +72,15 @@ public class RecipeDetail1Fragment extends Fragment {
     }
 
     private void initViews() {
-        TextView lblNombre = (TextView) getView().findViewById(R.id.lblNombre);
-        TextView lblCreador = (TextView) getView().findViewById(R.id.lblCreador);
-        TextView lblDificultad = (TextView) getView().findViewById(R.id.lblDificultad);
-        TextView lblComensales = (TextView) getView().findViewById(R.id.lblComensales);
-        TextView lblTiempo = (TextView) getView().findViewById(R.id.lblTiempo);
-        TextView lblDescripcion = (TextView) getView().findViewById(R.id.lblDescripcion);
-        ImageView imgFoto = (ImageView) getView().findViewById(R.id.imgFoto);
+        lblNombre = (TextView) getView().findViewById(R.id.lblNombre);
+        lblCreador = (TextView) getView().findViewById(R.id.lblCreador);
+        lblDificultad = (TextView) getView().findViewById(R.id.lblDificultad);
+        lblComensales = (TextView) getView().findViewById(R.id.lblComensales);
+        lblTiempo = (TextView) getView().findViewById(R.id.lblTiempo);
+        lblDescripcion = (TextView) getView().findViewById(R.id.lblDescripcion);
+        imgFoto = (ImageView) getView().findViewById(R.id.imgFoto);
 
-        lblNombre.setText(mRecipe.getName());
-        lblCreador.setText(mRecipe.getCreator());
-        lblTiempo.setText(mRecipe.getTime().toString()+" min");
-        lblDificultad.setText(mRecipe.getDifficulty().toString());
-        lblComensales.setText(mRecipe.getDiners().toString());
-        lblDescripcion.setText(mRecipe.getDetails());
-
-        if (mRecipe.getPicture() != null)
-            Picasso.with(getContext()).load(mRecipe.getPicture()).into(imgFoto);
-        else
-            Picasso.with(getContext()).load(R.drawable.default_recipe).into(imgFoto);
-
-
+        cargarDatos();
 
         //Lista de ingredientes
         rvLista = (RecyclerView) getView().findViewById(R.id.rvLista);
@@ -95,6 +91,21 @@ public class RecipeDetail1Fragment extends Fragment {
         rvLista.setLayoutManager(mLayoutManager);
         rvLista.setItemAnimator(new DefaultItemAnimator());
 
+    }
+
+    public void cargarDatos() {
+        lblNombre.setText(mRecipe.getName());
+        lblCreador.setText(mRecipe.getCreator());
+        lblTiempo.setText(mRecipe.getTime().toString());
+        lblDificultad.setText(mRecipe.getDifficulty().toString());
+        lblComensales.setText(mRecipe.getDiners().toString());
+        lblDescripcion.setText(mRecipe.getDetails());
+
+        if (mRecipe.getPicture() != null)
+            if (!mRecipe.getPicture().isEmpty())
+            Picasso.with(getContext()).load(mRecipe.getPicture()).into(imgFoto);
+        else
+            Picasso.with(getContext()).load(R.drawable.default_recipe).into(imgFoto);
     }
 }
 

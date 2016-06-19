@@ -404,7 +404,42 @@ $app->get('/filter/:name',  function($name){
         echoRespnse(404, $response);
     }
 });
+$app->post('/filter',   function() use ($app) {
+    verifyRequiredParams(array('min', 'max','diners','dificultad'));
 
+    $min = $app->request()->post('min');
+    $max = $app->request()->post('max');
+    $diners = $app->request()->post('diners');
+    $dif = $app->request()->post('dificultad');
+
+    $response = array();
+    $db = new DbHandler();
+    // fetch task
+    $result = $db->getRecipesFilter($min,$max,$diners,$dif);
+
+    if ($result != NULL) {
+        $response["error"] = false;
+        $response["recipes"] = array();
+        while ($recipe = $result->fetch_assoc()) {
+            $tmp = array();
+            $tmp["idrecipe"] = $recipe["idrecipe"];
+            $tmp["name"] = $recipe["name"];
+            $tmp["details"] = $recipe["details"];
+            $tmp["picture"] = $recipe["picture"];
+            $tmp["difficulty"] = $recipe["difficulty"];
+            $tmp["time"] = $recipe["time"];
+            $tmp["diners"] = $recipe["diners"];
+            $tmp["creator"] = $recipe["creator"];
+            array_push($response["recipes"], $tmp);
+        }
+
+        echoRespnse(200, $response);
+    } else {
+        $response["error"] = true;
+        $response["message"] = "The requested resourceasdas doesn't exists";
+        echoRespnse(404, $response);
+    }
+});
 
 ////////// Prototipo para filtro ingredients
 //$app->post('/filter',  function() use ($app){
@@ -453,10 +488,6 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
     $difficulty =$recipe["difficulty"];
     $time =$recipe["time"];
     $diners =$recipe["diners"];
-
-    $step=$recipe["step"];
-    $quantity=$recipe["quantity"];
-
 
     global $user_id;
     $db = new DbHandler();

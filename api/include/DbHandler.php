@@ -317,6 +317,14 @@ class DbHandler {
         $stmt->close();
         return $recipes;
     }
+    public function getRecipesFilter($min,$max,$diners,$dif) {
+        $stmt = $this->conn->prepare("SELECT * FROM recipes WHERE time >= ? AND time <= ? AND diners >= ? AND difficulty <= ?");
+        $stmt->bind_param("iiii", $min,$max, $diners, $dif);
+        $stmt->execute();
+        $recipes = $stmt->get_result();
+        $stmt->close();
+        return $recipes;
+    }
     public function deleteFav($user_id, $recipe_id) {
         $stmt = $this->conn->prepare("DELETE FROM favs WHERE iduser = ? AND idrecipe = ?");
         $stmt->bind_param("si", $user_id, $recipe_id);
@@ -371,10 +379,10 @@ class DbHandler {
       $stmt->bind_param("s", $name);
       $stmt->execute();
       $ingredient =$stmt->get_result()->fetch_assoc();
-      if(is_null(ingredient['idingredient'])){
-        $idingredient=createIngredient($name);
+      if(is_null($ingredient['idingredient'])){
+        $idingredient=self::createIngredient($name);
       }else{
-        $idingredient=ingredient['idingredient'];
+        $idingredient=$ingredient['idingredient'];
       }
       $stmt->close();
       return $idingredient;
@@ -403,18 +411,7 @@ class DbHandler {
         return $num_affected_rows > 0;
     }
 
-    /**                                                                                                                     d
-     * Deleting a task
-     * @param String $task_id id of the task to delete
-     */
-    public function deleteRecipe($user_id, $task_id) {
-        $stmt = $this->conn->prepare("DELETE t FROM tasks t, user_tasks ut WHERE t.id = ? AND ut.task_id = t.id AND ut.user_id = ?");
-        $stmt->bind_param("ii", $task_id, $user_id);
-        $stmt->execute();
-        $num_affected_rows = $stmt->affected_rows;
-        $stmt->close();
-        return $num_affected_rows > 0;
-    }
+
 
 
 

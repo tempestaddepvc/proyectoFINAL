@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/filterName"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Filtrar por nombre"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/filterAvanced"
+        android:orderInCategory="100"
+        android:title="Filtro Avanzado"
         app:showAsAction="never" />
 </menu>

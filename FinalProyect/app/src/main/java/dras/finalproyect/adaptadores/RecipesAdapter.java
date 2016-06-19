@@ -24,6 +24,11 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
     private final ArrayList<Recipe> mDatos;
     private OnItemClickListener onItemClickListener;
 
+    public void add(Recipe recipe) {
+        mDatos.add(recipe);
+        notifyItemInserted(mDatos.size()-1);
+    }
+
     public interface OnItemClickListener {
         void onItemClick(View view, Recipe recipe, int position);
     }
@@ -115,7 +120,8 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
             lblComensales.setText(recipe.getDiners().toString());
 
             if (recipe.getPicture() != null)
-                Picasso.with(itemView.getContext()).load(recipe.getPicture()).into(imgFoto);
+                if (!recipe.getPicture().isEmpty())
+                    Picasso.with(itemView.getContext()).load(recipe.getPicture()).into(imgFoto);
             else
                 Picasso.with(itemView.getContext()).load(R.drawable.default_recipe).into(imgFoto);
 

@@ -4,26 +4,26 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
 
 import dras.finalproyect.R;
 
 /**
  * Created by Dras on 29/05/2016.
  */
-public class DialogoRegistro extends AppCompatDialogFragment {
+public class DialogoFiltroName extends AppCompatDialogFragment {
 
     // Variables.
-    private DialogRegsListener mListener = null;
+    private DialogFilterNameListener mListener = null;
+    private EditText txt;
 
     // Interfaz pública para comunicación con la actividad.
-    public interface DialogRegsListener {
-        public void onPositiveButtonClick();
+    public interface DialogFilterNameListener {
+        public void onFilterName(String filtro);
     }
 
 
@@ -33,15 +33,16 @@ public class DialogoRegistro extends AppCompatDialogFragment {
         b.setTitle("Error Usuario");
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialogo_registro, null);
+        View v = inflater.inflate(R.layout.dialog_filtro_name, null);
         b.setView(v);
+        txt= (EditText) v.findViewById(R.id.txt);
 
         b.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             // Al pulsar el botón positivo.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Se notifica el evento al listener.
-                mListener.onPositiveButtonClick();
+                mListener.onFilterName(txt.getText().toString());
             }
         });
         b.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -61,7 +62,7 @@ public class DialogoRegistro extends AppCompatDialogFragment {
         super.onAttach(activity);
         // Establece la actividad como listener de los eventos del diálogo.
         try {
-            mListener = (DialogRegsListener) activity;
+            mListener = (DialogFilterNameListener) activity;
         } catch (ClassCastException e) {
             // La actividad no implementa la interfaz, se lanza excepción.
             throw new ClassCastException(activity.toString()

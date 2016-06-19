@@ -26,20 +26,21 @@ import retrofit2.http.Path;
  */
 public class App extends Application {
     private static final String BASE_URL = "http://52.31.144.145/api/v1/";
-    private static final String AUTH="authorization";
+    private static final String AUTH = "authorization";
     public static final String PREF_USER = "saved user_id";
     public static final String PREF_API = "saved api_key";
     public static final String PREF_NAME = "pref";
     private static APIinterface servicio;
     public static String api_key;
     public static String user_id;
-    public static Recipe mRecipeAcutal;
+    public static Recipe mRecipeActual;
 
 
     public interface APIinterface {
         @FormUrlEncoded
         @POST("register")
         Call<Respuesta> registro(@Field("user") String user, @Field("password") String pass);
+
         @FormUrlEncoded
         @POST("login")
         Call<Respuesta> login(@Field("user") String user, @Field("password") String pass);
@@ -53,8 +54,10 @@ public class App extends Application {
 
         @GET("favs/user/{id}")
         Call<Respuesta> obtenerFavs(@Path("id") String idusuario);
+
         @GET("recipes/user/{id}")
         Call<Respuesta> obtenerCreados(@Path("id") String idusuario);
+
         @GET("createdandfav/user/{id}")
         Call<Respuesta> obtenerFavsAndCreados(@Path("id") String idusuario);
 
@@ -64,19 +67,25 @@ public class App extends Application {
         @GET("filter/{name}")
         Call<Respuesta> filtrarNombre(@Path("name") String filtro);
 
+        @GET("filter")
+        Call<Respuesta> filtrarAvanzado(@Field("min") int min, @Field("max") int max, @Field("diners") int comensales, @Field("dificultad") int dificultad);
+
         @FormUrlEncoded
         @POST("recipes")
-        Call<Respuesta> registrarReceta(@Header(AUTH) String key, @Body Recipe receta);
+        Call<Respuesta> registrarReceta(@Header(AUTH) String key, @Field("recipe") String recetaJson);
 
         @POST("favs/{id}")
         Call<Respuesta> agregarFav(@Header(AUTH) String key, @Path("id") int idreceta);
+
         @GET("favs/{id}")
         Call<Respuesta> comprobarFav(@Header(AUTH) String key, @Path("id") int idreceta);
+
         @DELETE("favs/{id}")
         Call<Respuesta> borrarFav(@Header(AUTH) String key, @Path("id") int idreceta);
 
 
     }
+
     @Override
     public void onCreate() {
         super.onCreate();

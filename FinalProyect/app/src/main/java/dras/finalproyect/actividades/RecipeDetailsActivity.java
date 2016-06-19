@@ -24,6 +24,7 @@ import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.fragmentos.RecipeDetail1Fragment;
 import dras.finalproyect.fragmentos.RecipeDetail2Fragment;
+import dras.finalproyect.fragmentos.RecipeEdit1Fragment;
 import dras.finalproyect.pojos.Recipe;
 import dras.finalproyect.pojos.Respuesta;
 import retrofit2.Call;
@@ -33,6 +34,7 @@ import retrofit2.Response;
 public class RecipeDetailsActivity extends AppCompatActivity {
 
 
+    private static final int EDITAR_RECIPE = 3;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
 
@@ -79,8 +81,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case  R.id.Editar:
+                RecipeEditActivity.startForResult(this, EDITAR_RECIPE);
+                return true;
+            case  R.id.Favoritos:
+
+                return true;
+            case  R.id.UnFavoritos:
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -126,6 +135,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     return "Preparacion";
             }
             return null;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            ((RecipeDetail1Fragment) mSectionsPagerAdapter.getItem(0)).cargarDatos();
         }
     }
 }

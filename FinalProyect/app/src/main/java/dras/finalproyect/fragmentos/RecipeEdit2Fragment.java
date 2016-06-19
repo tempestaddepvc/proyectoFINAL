@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.adaptadores.EditPasosAdapter;
-import dras.finalproyect.adaptadores.RecipePasosAdapter;
-import dras.finalproyect.pojos.Quantity;
 import dras.finalproyect.pojos.Recipe;
 import dras.finalproyect.pojos.Step;
 
@@ -41,7 +39,7 @@ public class RecipeEdit2Fragment extends Fragment implements EditPasosAdapter.On
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            mRecipe = App.mRecipeAcutal;
+            mRecipe = App.mRecipeActual;
 
     }
 
@@ -96,5 +94,9 @@ public class RecipeEdit2Fragment extends Fragment implements EditPasosAdapter.On
     @Override
     public void onStepClick(View view, Step step, int position) {
         Toast.makeText(getContext(),"Al hacer click Step",Toast.LENGTH_SHORT).show();
+    }
+
+    public void save(){
+
     }
 }

@@ -3,8 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="dras.finalproyect.actividades.RecipeDetailsActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/Favoritos"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Favs"
+        android:icon="@drawable/ic_menu_camera"
+        app:showAsAction="ifRoom|never" />
+    <item
+        android:id="@+id/UnFavoritos"
+        android:orderInCategory="100"
+        android:title="UnFavs"
+        android:icon="@drawable/ic_menu_camera"
+        app:showAsAction="ifRoom|never" />
+    <item
+        android:id="@+id/Editar"
+        android:orderInCategory="100"
+        android:title="Edit"
+        android:icon="@drawable/ic_menu_manage"
+        app:showAsAction="ifRoom|never" />
 </menu>

@@ -67,9 +67,9 @@ public class LoginActivity extends AppCompatActivity implements DialogoRegistro.
                 Respuesta respuesta = response.body();
                 if (respuesta.getError()) {
                     //Si usuario no existe
-                    if (respuesta.getMessage().equals("1"))
+                    if (((Double)respuesta.getMessage()).intValue()==1)
                         new DialogoRegistro().show(getSupportFragmentManager(),"Registro");
-                    else if (respuesta.getMessage().equals("2"))
+                    else if (((Double)respuesta.getMessage()).intValue()==2)
                     //Si la contraseña es incorrecta
                         Toast.makeText(getApplicationContext(),"Contraseña Incorrecta",Toast.LENGTH_SHORT).show();
                     else
@@ -105,7 +105,6 @@ public class LoginActivity extends AppCompatActivity implements DialogoRegistro.
         editor.putString(App.PREF_USER, usuario);
         editor.putString(App.PREF_API, api_key);
         editor.apply();
-        Log.e("FAIL", "Guardadas");
     }
 
 
