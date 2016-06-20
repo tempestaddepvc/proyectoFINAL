@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/side_nav_bar"
+    android:padding="@dimen/activity_horizontal_margin"
+>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrediente:"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/lblIngredient"
+/>
+    <EditText
+        android:id="@+id/txtIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblIngredient"
+        android:layout_marginBottom="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cant:"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/lblCantidad"
+        android:layout_below="@+id/txtIngredients"/>
+
+    <EditText
+        android:id="@+id/txtCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIngredients"
+        android:layout_toEndOf="@+id/lblCantidad"
+        android:layout_toRightOf="@+id/lblCantidad"
+        android:layout_toLeftOf="@+id/lblMedida"
+        android:layout_toStartOf="@+id/lblMedida"
+        android:maxLength="2"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medida:"
+        android:id="@+id/lblMedida"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/txtIngredients"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/txtMedida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/txtIngredients"
+        android:layout_toRightOf="@+id/lblMedida"
+        android:layout_toEndOf="@+id/lblMedida"/>
+
+
+
+
+</RelativeLayout>

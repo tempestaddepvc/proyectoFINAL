@@ -28,13 +28,12 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
     private TextView lblMax;
     private TextView lblComensales;
     private TextView lblDificultad;
-    private int min,max,diners,dificultad;
+    private int min, max, diners, dificultad;
 
     // Interfaz pública para comunicación con la actividad.
     public interface DialogFilterAvanzedListener {
         public void onAvancedFilter(int min, int max, int comensales, int dificultad);
     }
-
 
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -45,12 +44,12 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
         View v = inflater.inflate(R.layout.dialog_filter_avanzed, null);
         b.setView(v);
 
-        rbTiempo= (RangeBar) v.findViewById(R.id.rbTiempo);
+        rbTiempo = (RangeBar) v.findViewById(R.id.rbTiempo);
         rbDificultad = (RangeBar) v.findViewById(R.id.rbDificultad);
-        rbComensales= (RangeBar) v.findViewById(R.id.rbComensales);
-        lblMin  = (TextView) v.findViewById(R.id.lblMin);
-        lblMax  = (TextView) v.findViewById(R.id.lblMax);
-        lblDificultad  = (TextView) v.findViewById(R.id.lblDificultad);
+        rbComensales = (RangeBar) v.findViewById(R.id.rbComensales);
+        lblMin = (TextView) v.findViewById(R.id.lblMin);
+        lblMax = (TextView) v.findViewById(R.id.lblMax);
+        lblDificultad = (TextView) v.findViewById(R.id.lblDificultad);
         lblComensales = (TextView) v.findViewById(R.id.lblComensales);
 
 
@@ -59,8 +58,8 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
             public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,
                                               int rightPinIndex,
                                               String leftPinValue, String rightPinValue) {
-                min= Integer.parseInt(leftPinValue);
-                max= Integer.parseInt(rightPinValue);
+                min = Integer.parseInt(leftPinValue);
+                max = Integer.parseInt(rightPinValue);
                 lblMin.setText(leftPinValue);
                 lblMax.setText(rightPinValue);
             }
@@ -70,8 +69,13 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
             public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,
                                               int rightPinIndex,
                                               String leftPinValue, String rightPinValue) {
-                dificultad=rightPinIndex;
-                lblDificultad.setText(""+rightPinIndex);
+                dificultad = rightPinIndex;
+                if (rightPinIndex == 0)
+                    lblDificultad.setText("Easy");
+                else if (rightPinIndex == 1)
+                    lblDificultad.setText("Medium");
+                else
+                    lblDificultad.setText("Hard");
             }
         });
         rbComensales.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
@@ -79,8 +83,8 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
             public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,
                                               int rightPinIndex,
                                               String leftPinValue, String rightPinValue) {
-                diners=rightPinIndex+1;
-                lblComensales.setText(""+(rightPinIndex+1));
+                diners = rightPinIndex + 1;
+                lblComensales.setText("" + (rightPinIndex + 1));
             }
         });
 
@@ -90,7 +94,7 @@ public class DialogoFiltroAvanzado extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Se notifica el evento al listener.
-                mListener.onAvancedFilter(min,max,diners, dificultad);
+                mListener.onAvancedFilter(min, max, diners, dificultad);
             }
         });
         b.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {

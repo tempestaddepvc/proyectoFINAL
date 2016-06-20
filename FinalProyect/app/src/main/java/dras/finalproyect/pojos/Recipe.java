@@ -9,7 +9,7 @@ import java.util.List;
 
 import dras.finalproyect.App;
 
-public class Recipe implements Parcelable {
+public class Recipe implements Parcelable , MyClass{
 
     private Integer idrecipe;
     private String name;

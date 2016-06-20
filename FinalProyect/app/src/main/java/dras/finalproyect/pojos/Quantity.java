@@ -4,7 +4,7 @@ package dras.finalproyect.pojos;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Quantity implements Parcelable {
+public class Quantity implements Parcelable{
 
     private Integer idingredient;
     private String name;

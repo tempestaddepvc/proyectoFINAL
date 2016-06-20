@@ -6,6 +6,6 @@
         android:id="@+id/save"
         android:orderInCategory="100"
         android:title="Guardar"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/save"
         app:showAsAction="ifRoom|never" />
 </menu>

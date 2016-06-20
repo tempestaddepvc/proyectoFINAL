@@ -13,27 +13,44 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Entre:" />
+            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:text="Entre:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/lblMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Y " />
-        <TextView
-            android:id="@+id/lblMax"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="200" />
+            android:layout_margin="5dp"
+            android:textColor="@android:color/white"
+            android:text="5"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="min" />
+            android:layout_margin="5dp"
+            android:textColor="@android:color/white"
+            android:text=" Y "
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/lblMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="200"
+            android:textColor="@android:color/white"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textColor="@android:color/white"
+            android:text="min"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
 
@@ -43,6 +60,10 @@
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        custom:connectingLineColor="@color/colorBarra"
+        custom:pinColor="@color/colorBarra"
+        custom:selectorColor="@color/colorBarra"
+        custom:tickColor="@color/colorBarra"
         custom:tickEnd="200"
         custom:tickInterval="5"
         custom:tickStart="5" />
@@ -54,13 +75,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comensales" />
+            android:layout_margin="5dp"
+            android:text="Comensales"
+            android:textColor="@android:color/white"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/lblComensales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10" />
+            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:text="10"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
     <com.appyvet.rangebar.RangeBar
@@ -69,7 +96,11 @@
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        custom:connectingLineColor="@color/colorBarra"
+        custom:pinColor="@color/colorBarra"
         custom:rangeBar="false"
+        custom:selectorColor="@color/colorBarra"
+        custom:tickColor="@color/colorBarra"
         custom:tickEnd="10"
         custom:tickInterval="1"
         custom:tickStart="1" />
@@ -81,13 +112,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dificultad:" />
+            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:text="Dificultad:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/lblDificultad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hard" />
+            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:text="Hard"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
     <com.appyvet.rangebar.RangeBar
@@ -96,9 +133,12 @@
         android:layout_height="72dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        custom:connectingLineColor="@color/colorBarra"
+        custom:pinColor="@color/colorBarra"
         custom:rangeBar="false"
+        custom:selectorColor="@color/colorBarra"
+        custom:tickColor="@color/colorBarra"
         custom:tickEnd="2"
         custom:tickInterval="1"
-        custom:tickStart="0"
-        />
+        custom:tickStart="0" />
 </LinearLayout>

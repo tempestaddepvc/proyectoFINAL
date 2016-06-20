@@ -6,13 +6,13 @@
         android:id="@+id/Favoritos"
         android:orderInCategory="100"
         android:title="Favs"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/unfav"
         app:showAsAction="ifRoom|never" />
     <item
         android:id="@+id/UnFavoritos"
         android:orderInCategory="100"
         android:title="UnFavs"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/fav"
         app:showAsAction="ifRoom|never" />
     <item
         android:id="@+id/Editar"

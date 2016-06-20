@@ -73,18 +73,7 @@ public class EditIngredientsAdapter extends RecyclerView.Adapter<EditIngredients
         // Se crea el contenedor de vistas para la fila.
         final ViewHolder viewHolder = new ViewHolder(itemView);
 
-        // Cuando se hace click sobre el elemento.
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    // Se informa al listener.
-                    onItemClickListener.onIngredientClick(v,
-                            mDatos.get(viewHolder.getAdapterPosition()),
-                            viewHolder.getAdapterPosition());
-                }
-            }
-        });
+
 
          // Se retorna el contenedor.
         return viewHolder;

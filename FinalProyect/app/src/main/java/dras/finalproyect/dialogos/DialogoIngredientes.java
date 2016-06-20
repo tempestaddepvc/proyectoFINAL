@@ -15,34 +15,36 @@ import dras.finalproyect.R;
 /**
  * Created by Dras on 29/05/2016.
  */
-public class DialogoFiltroName extends AppCompatDialogFragment {
+public class DialogoIngredientes extends AppCompatDialogFragment {
 
     // Variables.
-    private DialogFilterNameListener mListener = null;
-    private EditText txt;
+    private DialogIngredientListener mListener = null;
+    private EditText txtIngredients,txtCantidad,txtMedida;
 
     // Interfaz pública para comunicación con la actividad.
-    public interface DialogFilterNameListener {
-        public void onFilterName(String filtro);
+    public interface DialogIngredientListener {
+        public void onAddIngredient(String nombre,int cant, String medida);
     }
 
 
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder b = new AlertDialog.Builder(this.getActivity());
-        b.setTitle("Nombre para filtrar:");
+        b.setTitle("Add Ingrediente");
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialog_filtro_name, null);
+        View v = inflater.inflate(R.layout.dialog_ingredients, null);
         b.setView(v);
-        txt= (EditText) v.findViewById(R.id.txt);
+        txtIngredients= (EditText) v.findViewById(R.id.txtIngredients);
+        txtCantidad= (EditText) v.findViewById(R.id.txtCantidad);
+        txtMedida= (EditText) v.findViewById(R.id.txtMedida);
 
         b.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             // Al pulsar el botón positivo.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Se notifica el evento al listener.
-                mListener.onFilterName(txt.getText().toString());
+                mListener.onAddIngredient(txtIngredients.getText().toString(), Integer.parseInt(txtCantidad.getText().toString()),txtMedida.getText().toString());
             }
         });
         b.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -62,7 +64,7 @@ public class DialogoFiltroName extends AppCompatDialogFragment {
         super.onAttach(activity);
         // Establece la actividad como listener de los eventos del diálogo.
         try {
-            mListener = (DialogFilterNameListener) activity;
+            mListener = (DialogIngredientListener) activity;
         } catch (ClassCastException e) {
             // La actividad no implementa la interfaz, se lanza excepción.
             throw new ClassCastException(activity.toString()

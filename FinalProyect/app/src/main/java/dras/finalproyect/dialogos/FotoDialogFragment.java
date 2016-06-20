@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import dras.finalproyect.App;
 import dras.finalproyect.R;
 import dras.finalproyect.fragmentos.RecipeEdit1Fragment;
 
@@ -44,7 +45,7 @@ public class FotoDialogFragment extends DialogFragment {
             File fotoFile = crearArchivoFoto(nombre, true);
             if (fotoFile != null) {
                 // Se añade como extra del intent la uri donde debe guardarse.
-                RecipeEdit1Fragment.sPathFotoOriginal = fotoFile.getAbsolutePath();
+                App.sPathFotoOriginal = fotoFile.getAbsolutePath();
                 i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fotoFile));
                 getActivity().startActivityForResult(i, RC_CAPTURAR_FOTO);
             }

@@ -12,13 +12,16 @@
             android:id="@+id/lDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/lblNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/imgFoto"
+                android:layout_toStartOf="@+id/imgFoto"
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -26,81 +29,90 @@
                 android:id="@+id/lblCreador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <ImageView
-                android:layout_below="@+id/lblCreador"
                 android:id="@+id/imgFoto"
                 android:layout_width="@dimen/foto"
                 android:layout_height="@dimen/foto"
-                android:background="@color/colorAccent"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
-
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/lblCreador"
+                android:src="@drawable/no_foto"
+                android:scaleType="centerCrop" />
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/comens"
+                android:layout_alignBottom="@+id/lblComensales"
+                android:layout_toStartOf="@+id/lblComensales"
+                android:layout_toLeftOf="@+id/lblComensales" />
             <TextView
                 android:id="@+id/lblDificultad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/imgFoto"/>
+                android:layout_below="@id/imgFoto"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/lblTiempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/lblDificultad"
                 android:layout_toLeftOf="@+id/lblMin"
                 android:layout_toStartOf="@+id/lblMin"
-                android:layout_below="@+id/lblDificultad"/>
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/lblMin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Min"
-                android:layout_marginLeft="10dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/lblDificultad"/>
+                android:layout_below="@+id/lblDificultad"
+                android:layout_marginLeft="10dp"
+                android:text="Min"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
             <TextView
                 android:id="@+id/lblComensales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/lblTiempo"/>
+                android:layout_below="@id/lblTiempo"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
+                android:id="@+id/lblDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text aaad"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/lblNombre"
                 android:layout_toLeftOf="@+id/imgFoto"
                 android:layout_toStartOf="@+id/imgFoto"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:id="@+id/lblDescripcion"
-       />
+                android:text="Medium Text aaad"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/ingredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ingredientes"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/lDetails"
             android:layout_margin="10dp"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp"
+            android:text="Ingredientes"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvLista"

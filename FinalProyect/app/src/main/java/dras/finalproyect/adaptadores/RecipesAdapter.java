@@ -115,7 +115,18 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
 
         public void bind(Recipe recipe) {
             lblNombre.setText(recipe.getName());
-            lblDificultad.setText(recipe.getDifficulty().toString());
+
+            if (recipe.getDifficulty()==0){
+                lblDificultad.setText("Easy");
+                lblDificultad.setTextColor(itemView.getContext().getResources().getColor(R.color.colorEasy));
+            }else if (recipe.getDifficulty()==1){
+                lblDificultad.setText("Medium");
+                lblDificultad.setTextColor(itemView.getContext().getResources().getColor(R.color.colorMedium));
+            }else{
+                lblDificultad.setText("Hard");
+                lblDificultad.setTextColor(itemView.getContext().getResources().getColor(R.color.colorHard));
+            }
+
             lblTiempo.setText(recipe.getTime().toString());
             lblComensales.setText(recipe.getDiners().toString());
 
@@ -123,7 +134,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.ViewHold
                 if (!recipe.getPicture().isEmpty())
                     Picasso.with(itemView.getContext()).load(recipe.getPicture()).into(imgFoto);
             else
-                Picasso.with(itemView.getContext()).load(R.drawable.default_recipe).into(imgFoto);
+                Picasso.with(itemView.getContext()).load(R.drawable.no_foto).into(imgFoto);
 
         }
     }

@@ -39,6 +39,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
 
     private ViewPager mViewPager;
+    private App.APIinterface servicio;
+    private Toolbar toolbar;
 
 
     public static void start(Activity a) {
@@ -51,8 +53,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_details);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_arrow);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -64,7 +69,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
+        servicio = App.getServicio();
     }
 
 
@@ -73,6 +78,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_recipe_details, menu);
+        toolbar.getMenu().findItem(R.id.Editar).setVisible(false);
+        toolbar.getMenu().findItem(R.id.UnFavoritos).setVisible(false);
+        toolbar.getMenu().findItem(R.id.Favoritos).setVisible(false);
+        comprobarFav();
         return true;
     }
 
@@ -82,19 +91,85 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             case  R.id.Editar:
                 RecipeEditActivity.startForResult(this, EDITAR_RECIPE);
                 return true;
             case  R.id.Favoritos:
-
+                agregarFav();
                 return true;
             case  R.id.UnFavoritos:
+                eliminarFav();
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+    private void agregarFav() {
+        servicio.agregarFav(App.api_key,App.mRecipeActual.getIdrecipe()).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Respuesta respuesta = response.body();
+                if (!respuesta.getError()) {
+                    ///Desactivar icono menu
+                    toolbar.getMenu().findItem(R.id.Favoritos).setVisible(false);
+                    toolbar.getMenu().findItem(R.id.UnFavoritos).setVisible(true);
+                }
+                //Se ha producido un error
+                else {
+                    Log.e("FAIL1 - Detail:", respuesta.getMessage().toString());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Log.e("FAIL - Details", t.toString());
+            }
+        });
+    }
+    private void eliminarFav() {
+        servicio.borrarFav(App.api_key,App.mRecipeActual.getIdrecipe()).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Respuesta respuesta = response.body();
+                if (!respuesta.getError()) {
+                    ///Desactivar icono menu
+                    toolbar.getMenu().findItem(R.id.UnFavoritos).setVisible(false);
+                    toolbar.getMenu().findItem(R.id.Favoritos).setVisible(true);
+                }
+                //Se ha producido un error
+                else {
+                    Log.e("FAIL1 - Detail:", respuesta.getMessage().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Log.e("FAIL - Details", t.toString());
+            }
+        });
+    }
+    private void comprobarFav() {
+        servicio.comprobarFav(App.api_key,App.mRecipeActual.getIdrecipe()).enqueue(new Callback<Respuesta>() {
+            @Override
+            public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
+                Respuesta respuesta = response.body();
+                if (!respuesta.getError()) {
+                    toolbar.getMenu().findItem(R.id.UnFavoritos).setVisible(true);
+                }
+                else {
+                    toolbar.getMenu().findItem(R.id.Favoritos).setVisible(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Respuesta> call, Throwable t) {
+                Log.e("FAIL - Details", t.toString());
+            }
+        });
+    }
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

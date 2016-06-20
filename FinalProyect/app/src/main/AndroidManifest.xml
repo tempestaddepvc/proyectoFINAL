@@ -3,6 +3,7 @@
     package="dras.finalproyect">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -28,11 +29,21 @@
         <activity
             android:name=".actividades.RecipeDetailsActivity"
             android:label="@string/title_activity_recipe_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".actividades.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".actividades.MainActivity" />
+        </activity>
         <activity
             android:name=".actividades.RecipeEditActivity"
             android:label="@string/title_activity_recipe_edit"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".actividades.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".actividades.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

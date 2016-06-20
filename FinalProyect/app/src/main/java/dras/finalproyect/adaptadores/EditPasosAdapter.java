@@ -44,6 +44,10 @@ public class EditPasosAdapter extends RecyclerView.Adapter<EditPasosAdapter.View
         mDatos.remove(position);
         notifyItemRemoved(position);
     }
+    // Elimina un elemento de la lista.
+    public Step getItem(int position) {
+       return mDatos.get(position);
+    }
 
     // Inserta un elemento a la lista.
     public void addItem(Step step) {
@@ -73,18 +77,7 @@ public class EditPasosAdapter extends RecyclerView.Adapter<EditPasosAdapter.View
 
         // Se crea el contenedor de vistas para la fila.
         final ViewHolder viewHolder = new ViewHolder(itemView);
-        // Cuando se hace click sobre el elemento.
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    // Se informa al listener.
-                    onItemClickListener.onStepClick(v,
-                            mDatos.get(viewHolder.getAdapterPosition()),
-                            viewHolder.getAdapterPosition());
-                }
-            }
-        });
+
 
          // Se retorna el contenedor.
         return viewHolder;

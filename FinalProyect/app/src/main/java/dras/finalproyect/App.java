@@ -34,6 +34,7 @@ public class App extends Application {
     public static String api_key;
     public static String user_id;
     public static Recipe mRecipeActual;
+    public static String sPathFotoOriginal="";
 
 
     public interface APIinterface {
@@ -67,7 +68,8 @@ public class App extends Application {
         @GET("filter/{name}")
         Call<Respuesta> filtrarNombre(@Path("name") String filtro);
 
-        @GET("filter")
+        @FormUrlEncoded
+        @POST("filter")
         Call<Respuesta> filtrarAvanzado(@Field("min") int min, @Field("max") int max, @Field("diners") int comensales, @Field("dificultad") int dificultad);
 
         @FormUrlEncoded

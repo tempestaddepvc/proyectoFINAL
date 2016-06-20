@@ -383,7 +383,7 @@ $app->get('/filter/:name',  function($name){
 
     if ($result != NULL) {
         $response["error"] = false;
-        $response["recipes"] = array();
+        $response["message"] = array();
         while ($recipe = $result->fetch_assoc()) {
             $tmp = array();
             $tmp["idrecipe"] = $recipe["idrecipe"];
@@ -394,7 +394,7 @@ $app->get('/filter/:name',  function($name){
             $tmp["time"] = $recipe["time"];
             $tmp["diners"] = $recipe["diners"];
             $tmp["creator"] = $recipe["creator"];
-            array_push($response["recipes"], $tmp);
+            array_push($response["message"], $tmp);
         }
 
         echoRespnse(200, $response);
@@ -419,7 +419,7 @@ $app->post('/filter',   function() use ($app) {
 
     if ($result != NULL) {
         $response["error"] = false;
-        $response["recipes"] = array();
+        $response["message"] = array();
         while ($recipe = $result->fetch_assoc()) {
             $tmp = array();
             $tmp["idrecipe"] = $recipe["idrecipe"];
@@ -430,7 +430,7 @@ $app->post('/filter',   function() use ($app) {
             $tmp["time"] = $recipe["time"];
             $tmp["diners"] = $recipe["diners"];
             $tmp["creator"] = $recipe["creator"];
-            array_push($response["recipes"], $tmp);
+            array_push($response["message"], $tmp);
         }
 
         echoRespnse(200, $response);
@@ -515,7 +515,7 @@ $app->post('/recipes', 'authenticate', function() use ($app) {
         $response["message"] = "Failed to create recipe. Please try again";
     }
 
-    echoRespnse(201, $response);
+    echoRespnse(200, $response);
 });
 
 
@@ -536,7 +536,7 @@ $app->get('/favs/:id', 'authenticate', function($recipe_id) {
     } else {
         $response["error"] = true;
         $response["message"] = "No Existe";
-        echoRespnse(404, $response);
+        echoRespnse(200, $response);
     }
 });
 

@@ -1,19 +1,19 @@
 <resources>
-    <string name="app_name">FinalProyect</string>
+    <string name="app_name">Cooking4all</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_recipe_details">RecipeDetailsActivity</string>
+    <string name="title_activity_recipe_details">Detalles</string>
+    <string name="title_activity_recipe_edit">Crear Receta</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_recipe_edit">EditarActivity</string>
+
     <string name="titleCreadoPor">Creado Por:</string>
-    <string name="creador">Manuel Espinosa</string>
+    <string name="creador">Manuel Espinosa\nPablo Rull</string>
     <string name="titleVersion">Version:</string>
     <string name="version">1.0.5</string>
+
 
 </resources>

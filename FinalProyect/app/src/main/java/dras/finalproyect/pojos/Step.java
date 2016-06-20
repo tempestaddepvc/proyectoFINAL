@@ -4,11 +4,11 @@ package dras.finalproyect.pojos;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Step implements Parcelable, Comparable {
+public class Step implements Parcelable, Comparable , MyClass{
 
     private Integer idmaking;
     private String step;
-    private String picture;
+    private String picture="";
 
     /**
      * No args constructor for use in serialization

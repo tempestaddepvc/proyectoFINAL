@@ -111,12 +111,15 @@ public class MainActivity extends AppCompatActivity
     private void getLista() {
         App.getServicio().obtenerRecetas().enqueue(callback);
     }
+
     private void getFavs() {
         App.getServicio().obtenerFavs(App.user_id).enqueue(callback);
     }
+
     private void getCreated() {
         App.getServicio().obtenerCreados(App.user_id).enqueue(callback);
     }
+
     private void getCreatedAndFavs() {
         App.getServicio().obtenerFavsAndCreados(App.user_id).enqueue(callback);
     }
@@ -162,12 +165,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void configFab() {
-        final Activity activity=this;
+        final Activity activity = this;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                App.mRecipeActual=new Recipe();
+                App.mRecipeActual = new Recipe();
                 RecipeEditActivity.startForResult(activity, CREAR_RECIPE);
             }
         });
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity
                     ArrayList<Recipe> recipes = gson.fromJson(a, new TypeToken<ArrayList<Recipe>>() {
                     }.getType());
 
-                    App.mRecipeActual =recipes.get(0);
+                    App.mRecipeActual = recipes.get(0);
                     actividadDetalles();
                 }
                 //Se ha producido un error
@@ -240,12 +243,12 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id){
+        switch (id) {
             case R.id.filterName:
-                new DialogoFiltroName().show(getSupportFragmentManager(),"Filtrar por nombre");
+                new DialogoFiltroName().show(getSupportFragmentManager(), "Filtrar por nombre");
                 return true;
             case R.id.filterAvanced:
-                new DialogoFiltroAvanzado().show(getSupportFragmentManager(),"Filtrar Avanzado");
+                new DialogoFiltroAvanzado().show(getSupportFragmentManager(), "Filtrar Avanzado");
                 return true;
         }
 
@@ -260,20 +263,20 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id) {
             case R.id.option1:
-                    getLista();
+                getLista();
                 break;
             case R.id.option2:
-                    getCreated();
+                getFavs();
                 break;
             case R.id.option3:
-                    getFavs();
+                getCreated();
                 break;
             case R.id.option4:
-                    getCreatedAndFavs();
+                getCreatedAndFavs();
                 break;
             case R.id.aboutUs:
-                    InfoDialogFragment frgMiDialogo = new InfoDialogFragment();
-                    frgMiDialogo.show(getSupportFragmentManager(), "Info");
+                InfoDialogFragment frgMiDialogo = new InfoDialogFragment();
+                frgMiDialogo.show(getSupportFragmentManager(), "Info");
                 break;
             case R.id.logout:
                 SharedPreferences.Editor editor = getSharedPreferences(App.PREF_NAME, MODE_PRIVATE).edit();
@@ -296,11 +299,11 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onAvancedFilter(int min, int max, int comensales, int dificultad) {
-        App.getServicio().filtrarAvanzado(min,max,comensales,dificultad).enqueue(callback);
+        App.getServicio().filtrarAvanzado(min, max, comensales, dificultad).enqueue(callback);
     }
 
     @Override
     public void onFilterName(String filtro) {
-            App.getServicio().filtrarNombre(filtro).enqueue(callback);
+        App.getServicio().filtrarNombre(filtro).enqueue(callback);
     }
 }

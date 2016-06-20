@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -87,6 +88,7 @@ public class RecipeDetail1Fragment extends Fragment {
         mAdapter = new RecipeIngredientsAdapter((ArrayList<Quantity>) mRecipe.getQuantities());
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
 
+
         rvLista.setAdapter(mAdapter);
         rvLista.setLayoutManager(mLayoutManager);
         rvLista.setItemAnimator(new DefaultItemAnimator());
@@ -97,7 +99,18 @@ public class RecipeDetail1Fragment extends Fragment {
         lblNombre.setText(mRecipe.getName());
         lblCreador.setText(mRecipe.getCreator());
         lblTiempo.setText(mRecipe.getTime().toString());
-        lblDificultad.setText(mRecipe.getDifficulty().toString());
+
+        if (mRecipe.getDifficulty()==0){
+            lblDificultad.setText("Easy");
+            lblDificultad.setTextColor(getResources().getColor(R.color.colorEasy));
+        }else if (mRecipe.getDifficulty()==1){
+            lblDificultad.setText("Medium");
+            lblDificultad.setTextColor(getResources().getColor(R.color.colorMedium));
+        }else{
+            lblDificultad.setText("Hard");
+            lblDificultad.setTextColor(getResources().getColor(R.color.colorHard));
+        }
+
         lblComensales.setText(mRecipe.getDiners().toString());
         lblDescripcion.setText(mRecipe.getDetails());
 

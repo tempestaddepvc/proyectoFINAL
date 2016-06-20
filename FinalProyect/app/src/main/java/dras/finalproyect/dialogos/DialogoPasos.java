@@ -15,34 +15,34 @@ import dras.finalproyect.R;
 /**
  * Created by Dras on 29/05/2016.
  */
-public class DialogoFiltroName extends AppCompatDialogFragment {
+public class DialogoPasos extends AppCompatDialogFragment {
 
     // Variables.
-    private DialogFilterNameListener mListener = null;
-    private EditText txt;
+    private DialogPasosListener mListener = null;
+    private EditText txtStep;
 
     // Interfaz pública para comunicación con la actividad.
-    public interface DialogFilterNameListener {
-        public void onFilterName(String filtro);
+    public interface DialogPasosListener {
+        public void onAddPaso(String detalles, String foto);
     }
 
 
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder b = new AlertDialog.Builder(this.getActivity());
-        b.setTitle("Nombre para filtrar:");
+        b.setTitle("Add Paso");
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View v = inflater.inflate(R.layout.dialog_filtro_name, null);
+        View v = inflater.inflate(R.layout.dialog_pasos, null);
         b.setView(v);
-        txt= (EditText) v.findViewById(R.id.txt);
+        txtStep = (EditText) v.findViewById(R.id.txtStep);
 
         b.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             // Al pulsar el botón positivo.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Se notifica el evento al listener.
-                mListener.onFilterName(txt.getText().toString());
+                mListener.onAddPaso(txtStep.getText().toString(),"");
             }
         });
         b.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -62,7 +62,7 @@ public class DialogoFiltroName extends AppCompatDialogFragment {
         super.onAttach(activity);
         // Establece la actividad como listener de los eventos del diálogo.
         try {
-            mListener = (DialogFilterNameListener) activity;
+            mListener = (DialogPasosListener) activity;
         } catch (ClassCastException e) {
             // La actividad no implementa la interfaz, se lanza excepción.
             throw new ClassCastException(activity.toString()

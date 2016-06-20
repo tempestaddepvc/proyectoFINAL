@@ -42,7 +42,6 @@ import dras.finalproyect.pojos.Recipe;
 
 public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdapter.OnItemClickListener {
 
-    public static String sPathFotoOriginal="";
     private Recipe mRecipe;
     private RecyclerView rvLista;
     private EditIngredientsAdapter mAdapter;
@@ -68,9 +67,7 @@ public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdap
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
             mRecipe = App.mRecipeActual;
-
     }
 
     @Override
@@ -167,16 +164,18 @@ public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdap
             switch (requestCode) {
                 case FotoDialogFragment.RC_CAPTURAR_FOTO:
                     // Se agrega la foto a la Galería
-                    agregarFotoAGaleria(sPathFotoOriginal);
+                    agregarFotoAGaleria(App.sPathFotoOriginal);
                     // Se escala la foto, se almacena en archivo propio y se muestra en ImageView.
-                    cargarImagenEscalada(sPathFotoOriginal);
+                    cargarImagenEscalada(App.sPathFotoOriginal);
+                    sRutaArchivo=App.sPathFotoOriginal;
                     break;
                 case FotoDialogFragment.RC_SELECCIONAR_FOTO:
                     // Se obtiene el path real a partir de la uri retornada por la galería.
                     Uri uriGaleria = data.getData();
-                    sPathFotoOriginal = getRealPath(uriGaleria);
+                    App.sPathFotoOriginal = getRealPath(uriGaleria);
+                    sRutaArchivo=App.sPathFotoOriginal;
                     // Se escala la foto, se almacena en archivo propio y se muestra en ImageView.
-                    cargarImagenEscalada(sPathFotoOriginal);
+                    cargarImagenEscalada(App.sPathFotoOriginal);
                     break;
             }
         }
@@ -252,6 +251,25 @@ public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdap
         return archivo;
     }
 
+    public void addIngredient(Quantity quantity) {
+        mAdapter.addItem(quantity);
+        mAdapter.notifyItemInserted(mAdapter.getItemCount()-1);
+    }
+
+    public boolean tieneDatos() {
+        if(txtComensales.getText().toString().isEmpty())
+            return false;
+        if(txtDescripcion.getText().toString().isEmpty())
+            return false;
+        if(txtDificultad.getText().toString().isEmpty())
+            return false;
+        if(txtTiempo.getText().toString().isEmpty())
+            return false;
+        if(txtNombre.getText().toString().isEmpty())
+            return false;
+        return true;
+    }
+
     private class MostrarFotoAsyncTask extends AsyncTask<String, Void, Bitmap> {
 
         @Override
@@ -275,7 +293,6 @@ public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdap
                 String nombre = "IMG_" + timestamp + "_" + ".jpg";
                 File archivo = crearArchivoFoto(nombre, false);
                 if (archivo != null) {
-                    sRutaArchivo=archivo.getAbsolutePath();
                     if (guardarBitmapEnArchivo(bitmapFoto, archivo)) {
                         // Se muestra la foto en el ImageView.
                         imgFoto.setImageBitmap(bitmapFoto);
@@ -332,7 +349,7 @@ public class RecipeEdit1Fragment extends Fragment implements EditIngredientsAdap
         mRecipe.setTime(Integer.valueOf(txtTiempo.getText().toString()));
         mRecipe.setName(txtNombre.getText().toString());
         mRecipe.setDifficulty(Integer.valueOf(txtDificultad.getText().toString()));
-
+        mRecipe.setPicture(sRutaArchivo);
     }
 }
 
